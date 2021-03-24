@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('produtos', {
-      id_produto: {
+      id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -15,6 +15,8 @@ module.exports = {
           model: 'categorias',
           key: 'id'
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       nome: {
         type: Sequelize.STRING(100),
