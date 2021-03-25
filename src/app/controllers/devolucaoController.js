@@ -32,7 +32,7 @@ class DevolucaoController {
         const { id } = req.params;
         const { id_Estoque, id_Produto, id_Motivo, quantidade} = req.body;
 
-        const [linhas, objetos] = await Devolucao.update({
+        const devolucao = await Devolucao.update({
             id_Estoque,
             id_Produto,
             id_Motivo,
@@ -42,10 +42,7 @@ class DevolucaoController {
             returning: true            
         });
 
-        return res.json({
-            linhas,
-            objetos
-        });
+        return res.json(devolucao);
     }
 
     async delete(req, res) {

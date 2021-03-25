@@ -2,9 +2,11 @@ import Sequelize from 'sequelize';
 import config from '../config/database';
 
 import Devolucao from '../app/models/devolucao';
+import Movimentacao from '../app/models/movimentacao';
 
 const models = [
     Devolucao,
+    Movimentacao
 ];
 
 class Database{
