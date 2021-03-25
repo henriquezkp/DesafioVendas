@@ -1,5 +1,4 @@
-import Sequelize, { Model } from 'sequelize';
-import Movimentacao from './movimentacao'
+/*import Sequelize, { Model } from 'sequelize';
 
 class Tipo extends Model {
     static init(sequelize) {
@@ -22,16 +21,7 @@ class Tipo extends Model {
 
         return this;
     }
-
-    static associate(sequelize) {
-        this.belongsTo(Movimentacao, {
-            foreignKey: 'tipo'
-        });
-
-        Movimentacao.hasMany(Tipo, {
-            foreignKey: 'tipo'
-        })
-    }
+ 
 }
 
-export default Tipo;
+export default Tipo;*/

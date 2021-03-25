@@ -1,6 +1,4 @@
 import Sequelize, { Model } from 'sequelize';
-import Categoria from './categoria';
-
 
 class Produto extends Model {
     static init(sequelize) {
@@ -16,9 +14,7 @@ class Produto extends Model {
                 references: {
                     model: 'categorias',
                     key: 'id'
-                },
-                onUpdate: 'CASCADE',
-                onDelete: 'CASCADE',
+                }
             },
             nome: {
                 type: Sequelize.STRING(100),
@@ -28,20 +24,16 @@ class Produto extends Model {
                 type: Sequelize.FLOAT(2)
             },
         },
-        {
-          sequelize,
-          tableName: 'produtos'
-        })
+            {
+                sequelize,
+                tableName: 'produtos'
+            });
+
+        return this;
     }
 
-    static associate(sequelize) {
-        this.belongsTo(Categoria, {
-            foreignKey: 'id_categoria'
-        });
-
-        Categoria.hasMany(Produto, {
-            foreignKey: 'id_categoria'
-        })
+    static associate(models) {
+        this.belongsTo(models.Categoria);
     }
 }
 

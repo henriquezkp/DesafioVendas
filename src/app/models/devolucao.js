@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize';
+/*import Sequelize, { Model } from 'sequelize';
 
 import Produto from './produto';
 import Estoque from './estoque';
@@ -50,11 +50,11 @@ class Devolucao extends Model {
     }
 
     static associate(sequelize) {
-        this.belongsTo(Produto, {
+        this.hasMany(Produto, {
             foreignKey: 'id_Produto',
         });
 
-        Produto.hasMany(this, {
+        Produto.belongsTo(this, {
             foreignKey: 'id_Produto',
         });
 
@@ -76,4 +76,4 @@ class Devolucao extends Model {
     }
 };
 
-export default Devolucao;
+export default Devolucao;*/

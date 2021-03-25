@@ -4,11 +4,11 @@ import config from '../config/database';
 import Devolucao from '../app/models/devolucao';
 import Movimentacao from '../app/models/movimentacao';
 import Produto from '../app/models/produto';
+import Categoria from '../app/models/categoria';
 
 const models = [
-    Devolucao,
-    Movimentacao,
-    Produto
+    Categoria,
+    //Produto
 ];
 
 class Database {
