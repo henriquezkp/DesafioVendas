@@ -1,4 +1,4 @@
-/*import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
 class Motivo extends Model {
   static init(sequelize) {
@@ -19,6 +19,10 @@ class Motivo extends Model {
       });
     return this;
   }
+
+  static associate(models){
+    this.belongsTo(models.Devolucao);
+  }
 }
 
-export default Motivo;*/
+export default Motivo;

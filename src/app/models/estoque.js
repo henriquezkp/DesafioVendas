@@ -1,4 +1,4 @@
-/*import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
 class Estoque extends Model {
     static init(sequelize) {
@@ -21,6 +21,12 @@ class Estoque extends Model {
 
         return this;
     }
+
+    static associate(models){
+        this.hasMany(models.Movimentacao);
+        this.hasMany(models.Devolucao);
+        this.belongsTo(models.EstoqueTotal);
+    }
 }
 
-export default Estoque;*/
+export default Estoque;

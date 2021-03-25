@@ -34,6 +34,9 @@ class Produto extends Model {
 
     static associate(models) {
         this.belongsTo(models.Categoria);
+        this.hasMany(models.Movimentacao);
+        this.belongsTo(models.Devolucao);
+        this.belongsTo(models.EstoqueTotal);
     }
 }
 

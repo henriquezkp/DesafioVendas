@@ -1,4 +1,4 @@
-/*import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
 class Tipo extends Model {
     static init(sequelize) {
@@ -21,7 +21,11 @@ class Tipo extends Model {
 
         return this;
     }
+
+    static associate(models){
+        this.belongsTo(models.Movimentacao);
+    }
  
 }
 
-export default Tipo;*/
+export default Tipo;

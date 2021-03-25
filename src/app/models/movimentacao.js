@@ -1,4 +1,4 @@
-/*import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
 class Movimentacao extends Model {
   static init(sequelize) {
@@ -45,31 +45,15 @@ class Movimentacao extends Model {
     return this;
   }
 
-  static associate(sequelize) {
-    this.belongsTo(Produto, {
-      foreignKey: 'id_Produto',
-    });
+  static associate(models) {
+    this.belongsTo(models.Produto);
 
-    Produto.hasMany(this, {
-      foreignKey: 'id_Produto',
-    });
+    this.belongsTo(models.Estoque);
 
-    this.belongsTo(Estoque, {
-      foreignKey: 'id_Estoque',
-    });
+    this.hasOne(models.Tipo);
 
-    Estoque.hasMany(this, {
-      foreignKey: 'id_Estoque',
-    });
-
-    this.hasOne(Tipo, {
-      foreignKey: 'id_Tipo',
-    });
-
-    Tipo.belongsTo(this, {
-      foreignKey: 'id_Tipo',
-    });
+    
   }
 }
 
-export default Movimentacao;*/
+export default Movimentacao;

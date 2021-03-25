@@ -5,10 +5,20 @@ import Devolucao from '../app/models/devolucao';
 import Movimentacao from '../app/models/movimentacao';
 import Produto from '../app/models/produto';
 import Categoria from '../app/models/categoria';
+import Motivo from '../app/models/motivo';
+import TiposDeMovimentacao from '../app/models/tipo';
+import Estoque from '../app/models/estoque';
+import EstoqueTotal from '../app/models/estoqueTotal';
 
 const models = [
     Categoria,
-    //Produto
+    Produto,
+    Motivo,
+    TiposDeMovimentacao,
+    Movimentacao,
+    Estoque,
+    Devolucao,
+    EstoqueTotal
 ];
 
 class Database {
