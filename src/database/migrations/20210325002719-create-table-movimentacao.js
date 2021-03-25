@@ -10,7 +10,11 @@ module.exports = {
       },
       tipo: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'tiposDeMovimentação',
+          key: 'id'
+        },
       },
       quantidade: {
         type: Sequelize.INTEGER,
