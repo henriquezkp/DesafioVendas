@@ -2,6 +2,8 @@ import Sequelize, { Model } from 'sequelize';
 
 import Produto from './produto';
 import Estoque from './estoque'
+
+
 class Movimentacao extends Model {
   static init(sequelize) {
     super.init({

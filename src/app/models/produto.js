@@ -27,6 +27,10 @@ class Produto extends Model {
             preco: {
                 type: Sequelize.FLOAT(2)
             },
+        },
+        {
+          sequelize,
+          tableName: 'produtos'
         })
     }
 
