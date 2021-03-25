@@ -1,8 +1,10 @@
 import Sequelize from 'sequelize';
 import config from '../config/database';
 
-const models = [
+import Devolucao from '../app/models/devolucao';
 
+const models = [
+    Devolucao,
 ];
 
 class Database{
