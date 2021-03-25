@@ -1,6 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
+///IMPORTANDO ROTAS
+import RotasProdutos from './app/routes/produtos';
+import RotasEstoques from './app/routes/estoques';
+import RotasCategorias from './app/routes/categorias';
+import RotasDevolucoes from './app/routes/devolucoes';
+import RotasMovimentacoes from './app/routes/movimentacoes';
+
 class App {
     constructor() {
         this.server = express();
@@ -24,6 +31,7 @@ class App {
 
     routers() {
         //this.server.use(rota...)
+        this.server.use(RotasProdutos);
     }
 
 }
