@@ -40,7 +40,7 @@ class ProdutoController {
         }
     }
 
-    async put(req, res) {
+    async update(req, res) {
         const { id } = req.params;
         
         const t = await Produto.findAll();

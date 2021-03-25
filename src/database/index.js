@@ -3,14 +3,16 @@ import config from '../config/database';
 
 import Devolucao from '../app/models/devolucao';
 import Movimentacao from '../app/models/movimentacao';
+import Produto from '../app/models/produto';
 
 const models = [
     Devolucao,
-    Movimentacao
+    Movimentacao,
+    Produto
 ];
 
-class Database{
-    constructor(){
+class Database {
+    constructor() {
         this.init();
     }
 

@@ -1,10 +1,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import './database/index';
+
 
 ///IMPORTANDO ROTAS
 import RotasProdutos from './app/routes/produtos';
-import RotasEstoques from './app/routes/estoques';
-import RotasCategorias from './app/routes/categorias';
+//import RotasEstoques from './app/routes/estoques';
+//import RotasCategorias from './app/routes/categorias';
 import RotasDevolucoes from './app/routes/devolucoes';
 import RotasMovimentacoes from './app/routes/movimentacoes';
 
@@ -21,7 +23,7 @@ class App {
 
         dotenv.config({
             path: process.env.NODE_ENV === 'teste'
-                ? '.env.test' : '.env'
+                ? '.env.test' : '.env',
         });
     }
 
