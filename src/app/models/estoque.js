@@ -12,7 +12,7 @@ class Estoque extends Model {
                 type: Sequelize.STRING(100),
                 allowNull: false
             },
-           
+    
         },
         {
            sequelize,

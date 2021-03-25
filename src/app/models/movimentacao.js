@@ -2,6 +2,7 @@ import Sequelize, { Model } from 'sequelize';
 
 import Produto from './produto';
 import Estoque from './estoque'
+import Tipo from './tipo'
 
 
 class Movimentacao extends Model {
@@ -12,9 +13,13 @@ class Movimentacao extends Model {
         autoIncrement: true,
         primaryKey: true,
       },
-      tipo: {
+      id_Tipo: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'tiposDeMovimentacao',
+          key: 'id'
+        },
       },
       quantidade: {
         type: Sequelize.INTEGER,
@@ -60,6 +65,14 @@ class Movimentacao extends Model {
 
     Estoque.hasMany(this, {
       foreignKey: 'id_Estoque',
+    });
+
+    this.belongsTo(Tipo, {
+      foreignKey: 'id_Tipo',
+    });
+
+    Tipo.hasMany(this, {
+      foreignKey: 'id_Tipo',
     });
   }
 }

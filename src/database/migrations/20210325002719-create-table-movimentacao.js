@@ -8,11 +8,11 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      tipo: {
+      id_Tipo: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'tiposDeMovimentação',
+          model: 'tiposDeMovimentacao',
           key: 'id'
         },
       },

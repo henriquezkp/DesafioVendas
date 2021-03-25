@@ -1,7 +1,7 @@
 import Sequelize, { Model } from 'sequelize';
 import Movimentacao from './movimentacao'
 
-class Estoque extends Model {
+class Tipo extends Model {
     static init(sequelize) {
         super.init({
             id: {
@@ -17,7 +17,7 @@ class Estoque extends Model {
         },
         {
            sequelize,
-           tableName: 'tiposDeMovimentação'
+           tableName: 'tiposDeMovimentacao'
         });
 
         return this;
@@ -28,10 +28,10 @@ class Estoque extends Model {
             foreignKey: 'tipo'
         });
 
-        Movimentacao.hasMany(Produto, {
+        Movimentacao.hasMany(Tipo, {
             foreignKey: 'tipo'
         })
     }
 }
 
-export default Estoque;
+export default Tipo;

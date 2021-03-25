@@ -66,11 +66,11 @@ class Devolucao extends Model {
             foreignKey: 'id_Estoque',
         });
 
-        this.belongsTo(Motivo, {
+        this.hasOne(Motivo, {
             foreignKey: 'id_Motivo',
         });
 
-        Motivo.hasMany(this, {
+        Motivo.belongsTo(this, {
             foreignKey: 'id_Motivo',
         });
     }
