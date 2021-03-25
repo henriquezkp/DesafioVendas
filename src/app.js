@@ -32,6 +32,7 @@ class App {
     routers() {
         //this.server.use(rota...)
         this.server.use(RotasProdutos);
+        this.server.use(RotasDevolucoes);
     }
 
 }

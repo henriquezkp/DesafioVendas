@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-import Movimentacao from './movimentacao';
+import Produto from './produto';
 import Estoque from './estoque';
 import Motivo from './motivo';
 
