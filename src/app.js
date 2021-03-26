@@ -35,7 +35,6 @@ class App {
         //this.server.use(rota...)
         this.server.use(RotasCategorias);
         this.server.use(RotasDevolucoes);
-        this.server.use(RotasEstoques);
     }
 
 }
