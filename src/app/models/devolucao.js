@@ -8,7 +8,7 @@ class Devolucao extends Model {
                 autoIncrement: true,
                 primaryKey: true,
             },
-            id_Estoque: {
+            id_estoque: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
@@ -16,7 +16,7 @@ class Devolucao extends Model {
                     key: 'id'
                 },
             },
-            id_Produto: {
+            id_produto: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
@@ -24,7 +24,7 @@ class Devolucao extends Model {
                     key: 'id'
                 },
             },
-            id_Motivo: {
+            id_motivo: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
