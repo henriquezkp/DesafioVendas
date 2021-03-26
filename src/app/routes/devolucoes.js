@@ -27,3 +27,5 @@ routes.delete(
     '/devolucoes/:id',
     DevolucaoController.delete
 );
+
+export default routes;

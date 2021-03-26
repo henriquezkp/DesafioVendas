@@ -3,8 +3,8 @@ import Devolucao from '../models/devolucao';
 class DevolucaoController {
 
     async index(req, res) {
-        const devolucoes = await Estadio.findAll();
-        return res.json(devolucoes);
+        //const devolucoes = await Estadio.findAll();
+        return res.json({message: "ok"});
     };
 
     async show(req, res) {
