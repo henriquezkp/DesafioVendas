@@ -4,7 +4,7 @@ import './database/index';
 
 
 ///IMPORTANDO ROTAS
-//import RotasProdutos from './app/routes/produtos';
+import RotasProdutos from './app/routes/produtos';
 import RotasEstoques from './app/routes/estoques';
 import RotasCategorias from './app/routes/categorias';
 import RotasDevolucoes from './app/routes/devolucoes';
@@ -36,6 +36,7 @@ class App {
         this.server.use(RotasCategorias);
         this.server.use(RotasDevolucoes);
         this.server.use(RotasEstoques);
+        this.server.use(RotasProdutos);
     }
 
 }

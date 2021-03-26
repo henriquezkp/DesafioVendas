@@ -3,8 +3,9 @@ import Produto from '../models/produto';
 class ProdutoController {
 
     async index(req, res) {
-        const t = await Produto.findAll();
-        return res.json(t);
+        const produtos = await Produto.findAll({attributes:['id', 'nome', 'preco', 'id_categoria']}
+        );
+        return res.json(produtos);
     }
 
     async show(req, res) {
@@ -25,7 +26,7 @@ class ProdutoController {
         let tNome = nome.toUpperCase();
 
         const existente = await Produto.findOne({
-            where: { tNome }
+            where: { nome: tNome }
         });
 
         if (existente) {
@@ -33,7 +34,7 @@ class ProdutoController {
         } else {
             const produto = await Produto.create({
                 id_categoria,
-                tNome,
+                nome:tNome,
                 preco,
             });
             return res.status(200).json(produto);
@@ -42,14 +43,28 @@ class ProdutoController {
 
     async update(req, res) {
         const { id } = req.params;
+        const { id_categoria, nome, preco } = req.body;
+        let tNome = nome.toUpperCase();
         
-        const t = await Produto.findAll();
-        return res.json(t);
+        const produto = await Produto.update({
+            id_categoria,
+            nome:tNome,
+            preco
+        },{
+            where: {id}
+        });
+        return res.status(200).json(produto);
     }
 
     async delete(req, res) {
-        const t = await Produto.findAll();
-        return res.json(t);
+        const { id } = req.params;
+
+        const linhas = await Produto.destroy({
+            where: { id },
+            returning: true
+        });
+
+        return res.status(200).json(linhas);
     }
 
 }
