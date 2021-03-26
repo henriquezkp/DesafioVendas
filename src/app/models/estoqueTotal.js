@@ -38,8 +38,8 @@ class EstoqueTotal extends Model {
     }
 
     static associate(models) {
-        this.hasMany(models.Estoque);
-        this.hasMany(models.Produto);
+        this.belongsTo(models.Estoque);
+        this.belongsTo(models.Produto);
     }
 };
 

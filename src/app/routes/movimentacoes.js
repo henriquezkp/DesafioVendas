@@ -27,3 +27,5 @@ routes.delete(
     '/movimentacoes/:id',
     MovimentacaoController.delete
 );
+
+export default routes;

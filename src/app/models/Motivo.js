@@ -21,7 +21,7 @@ class Motivo extends Model {
   }
 
   static associate(models){
-    this.belongsTo(models.Devolucao);
+    this.hasMany(models.Devolucao);
   }
 }
 

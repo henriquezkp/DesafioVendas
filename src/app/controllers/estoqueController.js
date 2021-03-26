@@ -4,13 +4,12 @@ import sequelize from 'sequelize';
 class EstoqueController {
 
     async index(req, res) {
-        const data = await Estoque.findAll()
+        const estoques = await Estoque.findAll()
 
-        return res.json(data);
+        return res.json(estoques);
     }
 
-
-    async show (req, res) {
+    async show(req, res) {
         const { id } = req.params;
 
         const estoque = await Estoque.findByPk(id);
@@ -22,26 +21,42 @@ class EstoqueController {
     async store(req, res) {
         const { nome } = req.body;
 
-        const criar_estoque = await Estoque.create({
-            nome
+
+        if (!nome) {
+            return res.status(400).json({ message: 'Dados Inválidos' });
+        }
+
+        let tNome = nome.toUpperCase();
+
+        const existente = await Estoque.findOne({
+            where: { nome: tNome }
         });
 
-        return res.json(criar_estoque);
+        if (existente) {
+            return res.status(400).json({ message: 'Estoque já cadastrado' });
+        } else {
+            const estoque = await Estoque.create({
+                nome: tNome
+            });
+            return res.status(200).json(estoque);
+        }
 
     }
 
-    async update (req, res) {
+    async update(req, res) {
         const { nome } = req.body;
         const { id } = req.params;
 
+        let tNome = nome.toUpperCase();
+
         const atualizar_estoque = await Estoque.update({
-            nome
-        },{
+            nome:tNome
+        }, {
             where: { id },
             returning: true
         });
 
-        return res.json(atualizar_estoque);
+        return res.status(200).json(atualizar_estoque);
 
 
     }
@@ -54,10 +69,8 @@ class EstoqueController {
             returning: true
         });
 
-        return res.json(linhas);
+        return res.status(200).json(linhas);
     }
-
-
 
 }
 

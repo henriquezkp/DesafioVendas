@@ -27,3 +27,5 @@ routes.delete(
     '/movimentacoes/:id',
     MotivoController.delete
 );
+
+export default routes;

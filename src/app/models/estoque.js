@@ -11,8 +11,7 @@ class Estoque extends Model {
             nome: {
                 type: Sequelize.STRING(100),
                 allowNull: false
-            },
-    
+            }    
         },
         {
            sequelize,
@@ -25,7 +24,7 @@ class Estoque extends Model {
     static associate(models){
         this.hasMany(models.Movimentacao);
         this.hasMany(models.Devolucao);
-        this.belongsTo(models.EstoqueTotal);
+        this.hasMany(models.EstoqueTotal);
     }
 }
 

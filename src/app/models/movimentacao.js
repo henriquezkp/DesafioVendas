@@ -50,7 +50,7 @@ class Movimentacao extends Model {
 
     this.belongsTo(models.Estoque);
 
-    this.hasOne(models.Tipo);
+    this.belongsTo(models.Tipo);
 
     
   }

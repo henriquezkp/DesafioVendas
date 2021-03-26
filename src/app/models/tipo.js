@@ -5,7 +5,7 @@ class Tipo extends Model {
         super.init({
             id: {
                 type: Sequelize.INTEGER,
-                autoIncrement: true,
+                autoIncrement: false,
                 primaryKey: true
             },
             nome: {
@@ -23,7 +23,7 @@ class Tipo extends Model {
     }
 
     static associate(models){
-        this.belongsTo(models.Movimentacao);
+        this.hasMany(models.Movimentacao);
     }
  
 }

@@ -46,11 +46,11 @@ class Devolucao extends Model {
     }
 
     static associate(models) {
-        this.hasMany(models.Produto);
+        this.belongsTo(models.Produto);
 
         this.belongsTo(models.Estoque);
 
-        this.hasOne(models.Motivo);
+        this.belongsTo(models.Motivo);
 
     }
 };
