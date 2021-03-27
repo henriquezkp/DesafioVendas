@@ -25,11 +25,6 @@ class Categoria extends Model {
     this.hasMany(models.Produto, {
       foreignKey: 'id'
     });
-
-    this.hasMany(models.Produto,
-      {
-        foreignKey: 'id_categoria'
-      });
   }
 }
 

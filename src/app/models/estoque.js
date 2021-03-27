@@ -11,23 +11,26 @@ class Estoque extends Model {
             nome: {
                 type: Sequelize.STRING(100),
                 allowNull: false
-            }    
+            }
         },
-        {
-           sequelize,
-           tableName: 'estoques'
-        });
+            {
+                sequelize,
+                tableName: 'estoques'
+            });
 
         return this;
     }
 
-    static associate(models){
+    static associate(models) {
         this.hasMany(models.Movimentacao, {
-            foreignKey: 'id'});
+            foreignKey: 'id'
+        });
         this.hasMany(models.Devolucao, {
-            foreignKey: 'id'});
+            foreignKey: 'id'
+        });
         this.hasMany(models.EstoqueTotal, {
-            foreignKey: 'id'});
+            foreignKey: 'id'
+        });
     }
 }
 
