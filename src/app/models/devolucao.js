@@ -49,8 +49,7 @@ class Devolucao extends Model {
         this.belongsTo(models.Produto, {
             foreignKey: 'id'});
 
-        this.belongsTo(models.Estoque, {
-            foreignKey: 'id'});
+        this.belongsTo(models.Estoque);
 
         this.belongsTo(models.Motivo, {
             foreignKey: 'id'});

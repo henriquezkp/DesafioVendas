@@ -49,29 +49,42 @@ class EstoqueController {
 
         let tNome = nome.toUpperCase();
 
+        const estoques = await Estoque.findAll({
+            where: { id }
+        })
+
+        if (estoques == "") {
+            return res.status(404).json({ message: "ID não encontrado" })
+        }
+
         const atualizar_estoque = await Estoque.update({
-            nome:tNome
+            nome: tNome
         }, {
             where: { id },
             returning: true
         });
 
         return res.status(200).json(atualizar_estoque);
-
-
-    }
+    };
 
     async delete(req, res) {
         const { id } = req.params;
 
+        const estoques = await Estoque.findAll({
+            where: { id }
+        })
+
+        if (estoques == "") {
+            return res.status(404).json({ message: "ID não encontrado" })
+        }
         const linhas = await Estoque.destroy({
             where: { id },
             returning: true
         });
 
-        return res.status(200).json(linhas);
-    }
+        return res.status(200).json(linhas, { message: "ID Excluido" });
+    };
 
-}
+};
 
 export default new EstoqueController();
