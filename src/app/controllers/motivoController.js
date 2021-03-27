@@ -5,7 +5,7 @@ class motivoController {
         const motivos = await Motivo.findAll()
         return res.json(motivos);
 
-    }
+    };
 
     async show(req, res) {
         const { id } = req.params;
@@ -15,7 +15,7 @@ class motivoController {
         });
 
         return res.json(motivo);
-    }
+    };
 
     async store(req, res) {
         const { nome } = req.body;

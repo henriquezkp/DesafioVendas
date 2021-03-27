@@ -1,5 +1,3 @@
-import sequelize from 'sequelize';
-
 import Produto from '../models/produto';
 import Categoria from './../models/categoria';
 

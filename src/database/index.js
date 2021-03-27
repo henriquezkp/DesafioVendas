@@ -1,13 +1,13 @@
 import Sequelize from 'sequelize';
 import config from '../config/database';
 
-import Devolucao from '../app/models/Devolucao';
-import Movimentacao from '../app/models/Movimentacao';
-import Produto from '../app/models/Produto';
 import Categoria from '../app/models/Categoria';
+import Produto from '../app/models/Produto';
 import Motivo from '../app/models/Motivo';
 import TiposDeMovimentacao from '../app/models/Tipo';
+import Movimentacao from '../app/models/Movimentacao';
 import Estoque from '../app/models/Estoque';
+import Devolucao from '../app/models/Devolucao';
 import EstoqueTotal from '../app/models/EstoqueTotal';
 
 
