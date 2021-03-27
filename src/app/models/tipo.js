@@ -5,7 +5,7 @@ class Tipo extends Model {
         super.init({
             id: {
                 type: Sequelize.INTEGER,
-                autoIncrement: false,
+                autoIncrement: true,
                 primaryKey: true
             },
             nome: {

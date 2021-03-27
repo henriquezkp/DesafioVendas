@@ -10,11 +10,9 @@ class MovimentacaoController {
     async show(req, res) {
         const { id } = req.params;
 
-        if(!id) {
-
-            return res.status(400).json({ message: 'Produto não encotrado' });
-
-        }
+        if (!id) {
+            return res.status(400).json({ message: 'Movimentação não encotrado' });
+        };
 
         const movimentacao = await Movimentacao.findByPk(id);
 
@@ -24,7 +22,7 @@ class MovimentacaoController {
     async store(req, res) {
         const { tipo, quantidade, id_estoque, id_produto } = req.body;
 
-        if(!tipo | !quantidade | !id_estoque | !id_produto ) {
+        if (!tipo | !quantidade | !id_estoque | !id_produto) {
 
             return res.status(400).json({ message: 'Dados Inválidos' });
 
@@ -33,8 +31,8 @@ class MovimentacaoController {
         const movimentacao = await Movimentacao.create({
             tipo,
             quantidade,
-            id_Estoque,
-            id_Produto,
+            id_estoque,
+            id_produto,
         });
 
         return res.json(movimentacao);
@@ -51,7 +49,7 @@ class MovimentacaoController {
             id_Produto,
         }, {
             where: { id },
-            returning: true            
+            returning: true
         });
 
         return res.json(movimentacao);
@@ -60,7 +58,7 @@ class MovimentacaoController {
     async delete(req, res) {
         const { id } = req.params;
 
-        if(!id) {
+        if (!id) {
 
             return res.status(400).json({ message: 'Produto não encotrado' });
 

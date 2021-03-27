@@ -10,6 +10,7 @@ import RotasCategorias from './app/routes/categorias';
 import RotasDevolucoes from './app/routes/devolucoes';
 import RotasMovimentacoes from './app/routes/movimentacoes';
 import RotasMotivos from './app/routes/motivos';
+import RotasTipos from './app/routes/tiposMovimentacoes';
 
 class App {
     constructor() {
@@ -40,6 +41,7 @@ class App {
         this.server.use(RotasProdutos);
         this.server.use(RotasMovimentacoes);
         this.server.use(RotasMotivos);
+        this.server.use(RotasTipos);
 
     }
 

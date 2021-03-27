@@ -8,4 +8,9 @@ routes.get(
     CategoriaController.index
 );
 
+routes.post(
+    '/categorias',
+    CategoriaController.store
+);
+
 export default routes;
