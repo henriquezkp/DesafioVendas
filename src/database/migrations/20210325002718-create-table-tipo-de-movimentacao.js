@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.createTable('tiposDeMovimentacao', {
       id: {
         type: Sequelize.INTEGER,
-        autoIncrement: false,
+        autoIncrement: true,
         primaryKey: true
       },
       nome: {

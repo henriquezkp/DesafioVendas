@@ -1,26 +1,24 @@
-import Estoque from '../models/Estoque';
+import Tipo from '../models/Tipo';
 import sequelize from 'sequelize';
 
-class EstoqueController {
+class TipoMovimentacaoController {
 
     async index(req, res) {
-        const estoques = await Estoque.findAll()
+        const tipos = await Tipo.findAll()
 
-        return res.json(estoques);
-    }
+        return res.json(tipos);
+    };
 
     async show(req, res) {
         const { id } = req.params;
 
-        const estoque = await Estoque.findByPk(id);
+        const tipos = await Tipo.findByPk(id);
 
-        return res.json(estoque);
-
-    }
+        return res.json(tipos);
+    };
 
     async store(req, res) {
         const { nome } = req.body;
-
 
         if (!nome) {
             return res.status(400).json({ message: 'Dados Inválidos' });
@@ -28,56 +26,56 @@ class EstoqueController {
 
         let tNome = nome.toUpperCase();
 
-        const existente = await Estoque.findOne({
+        const existente = await Tipo.findOne({
             where: { nome: tNome }
         });
 
         if (existente) {
-            return res.status(400).json({ message: 'Estoque já cadastrado' });
+            return res.status(400).json({ message: 'Tipo de movimentação já cadastrado' });
         } else {
-            const estoque = await Estoque.create({
+            const tipo = await Tipo.create({
                 nome: tNome
             });
-            return res.status(200).json(estoque);
+            return res.status(200).json(tipo);
         }
 
     }
 
     async update(req, res) {
-        const { nome } = req.body;
         const { id } = req.params;
+        const { nome } = req.body;
 
         let tNome = nome.toUpperCase();
 
-        const estoques = await Estoque.findAll({
+        const tipos = await Tipo.findAll({
             where: { id }
         })
 
-        if (estoques == "") {
+        if (tipos == "") {
             return res.status(404).json({ message: "ID não encontrado" })
         }
 
-        const atualizar_estoque = await Estoque.update({
+        const atualizar_tipos = await Tipo.update({
             nome: tNome
         }, {
             where: { id },
             returning: true
         });
 
-        return res.status(200).json(atualizar_estoque);
+        return res.status(200).json(atualizar_tipos);
     };
 
     async delete(req, res) {
         const { id } = req.params;
 
-        const estoques = await Estoque.findAll({
+        const tipos = await Tipo.findAll({
             where: { id }
         })
 
-        if (estoques == "") {
+        if (tipos == "") {
             return res.status(404).json({ message: "ID não encontrado" })
         }
-        const linhas = await Estoque.destroy({
+        const linhas = await Tipo.destroy({
             where: { id },
             returning: true
         });
@@ -87,4 +85,4 @@ class EstoqueController {
 
 };
 
-export default new EstoqueController();
+export default new TipoMovimentacaoController();

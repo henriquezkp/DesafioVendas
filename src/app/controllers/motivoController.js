@@ -10,7 +10,7 @@ class motivoController {
     async show(req, res) {
         const { id } = req.params;
 
-        const motivo = await motivo.findByPk(id, {
+        const motivo = await Motivo.findByPk(id, {
             where: { id: id },
         });
 
@@ -20,7 +20,7 @@ class motivoController {
     async store(req, res) {
         const { nome } = req.body;
 
-        const motivo = await Time.create({
+        const motivo = await Motivo.create({
             nome,
             created_at: new Date(),
         });
@@ -32,7 +32,7 @@ class motivoController {
         const { id } = req.params;
         const { nome } = req.body;
 
-        const motivo = await time.update({
+        const motivo = await Motivo.update({
             nome,
             created_at: new Date(),
         }, {

@@ -9,22 +9,22 @@ routes.get(
 );
 
 routes.get(
-    '/movimentacoes/:id',
+    '/motivos/:id',
     MotivoController.show
 );
 
 routes.post(
-    '/movimentacoes',
+    '/motivos',
     MotivoController.store
 );
 
 routes.put(
-    '/movimentacoes/:id',
+    '/motivos/:id',
     MotivoController.update
 );
 
 routes.delete(
-    '/movimentacoes/:id',
+    '/motivos/:id',
     MotivoController.delete
 );
 
