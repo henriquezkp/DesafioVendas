@@ -24,10 +24,10 @@ class ProdutoController {
         }
 
         let tNome = nome.toUpperCase();
-
-        const existente = await Produto.findOne({
+let existente = null;
+        /*const existente = await Produto.findOne({
             where: { nome: tNome }
-        });
+        });*/
 
         if (existente) {
             return res.status(400).json({ message: 'Produto já cadastrado' });
