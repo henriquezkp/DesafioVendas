@@ -16,16 +16,16 @@ class DevolucaoController {
     };
 
     async store(req, res) {
-        const { id_Estoque, id_Produto, id_Motivo, quantidade } = req.body;
+        const { id_estoque, id_produto, id_motivo, quantidade } = req.body;
 
-        if (!id_Estoque || !id_Produto || !id_Motivo || !quantidade) {
+        if (!id_estoque || !id_produto || !id_motivo || !quantidade) {
             return res.status(400).json({ message: 'Dados Inválidos' });
         }
 
         const devolucao = await Devolucao.create({
-            id_Estoque,
-            id_Produto,
-            id_Motivo,
+            id_estoque,
+            id_produto,
+            id_motivo,
             quantidade
         });
 

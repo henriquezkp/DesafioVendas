@@ -46,11 +46,14 @@ class Movimentacao extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Produto);
+    this.belongsTo(models.Produto, {
+      foreignKey: 'id'});
 
-    this.belongsTo(models.Estoque);
+    this.belongsTo(models.Estoque, {
+      foreignKey: 'id'});
 
-    this.belongsTo(models.Tipo);    
+    this.belongsTo(models.Tipo, {
+      foreignKey: 'id'});    
   }
 }
 

@@ -23,7 +23,8 @@ class Tipo extends Model {
     }
 
     static associate(models){
-        this.hasMany(models.Movimentacao);
+        this.hasMany(models.Movimentacao, {
+            foreignKey: 'id'});
     }
  
 }

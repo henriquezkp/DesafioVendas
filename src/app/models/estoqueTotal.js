@@ -38,8 +38,10 @@ class EstoqueTotal extends Model {
     }
 
     static associate(models) {
-        this.belongsTo(models.Estoque);
-        this.belongsTo(models.Produto);
+        this.belongsTo(models.Estoque, {
+            foreignKey: 'id'});
+        this.belongsTo(models.Produto, {
+            foreignKey: 'id'});
     }
 };
 
