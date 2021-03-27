@@ -33,30 +33,19 @@ class Produto extends Model {
     }
 
     static associate(models) {
-<<<<<<< HEAD
+
         this.belongsTo(models.Categoria, {
-            foreignKey: 'id'});
+            foreignKey: 'id'
+        });
         this.hasMany(models.Movimentacao, {
-            foreignKey: 'id'});
+            foreignKey: 'id'
+        });
         this.hasMany(models.Devolucao, {
-            foreignKey: 'id'});
+            foreignKey: 'id'
+        });
         this.hasMany(models.EstoqueTotal, {
-            foreignKey: 'id'});
-=======
-<<<<<<< HEAD
-        this.belongsTo(models.Categoria);
-=======
-        this.belongsTo(models.Categoria,
-            {
-                as: 'Categorias',
-                foreignKey: 'id_categoria'
-            });
->>>>>>> d9920414c5a6aa90e88aa78fb15823a924a885d9
-        this.hasMany(models.Movimentacao);
-        this.hasMany(models.Devolucao);
-        this.hasMany(models.EstoqueTotal);
->>>>>>> 1063830dca191c954fb1ac02fbda054b4ed565d8
+            foreignKey: 'id'
+        });
     }
 }
-
 export default Produto;
