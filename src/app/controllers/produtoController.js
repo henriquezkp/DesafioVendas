@@ -1,9 +1,16 @@
 import Produto from '../models/Produto';
+import Categoria from '../models/Categoria'
 
 class ProdutoController {
 
     async index(req, res) {
-        const produtos = await Produto.findAll();
+        const produtos = await Produto.findAll({
+            include: [
+                { 
+                    model: Categoria,
+                }
+            ]
+        });
         return res.json(produtos);
     }
 

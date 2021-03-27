@@ -20,16 +20,16 @@ class MovimentacaoController {
     };
 
     async store(req, res) {
-        const { tipo, quantidade, id_estoque, id_produto } = req.body;
+        const { id_tipo, quantidade, id_estoque, id_produto } = req.body;
 
-        if (!tipo | !quantidade | !id_estoque | !id_produto) {
+        if (!id_tipo | !quantidade | !id_estoque | !id_produto) {
 
             return res.status(400).json({ message: 'Dados Inválidos' });
 
         }
 
         const movimentacao = await Movimentacao.create({
-            tipo,
+            id_tipo,
             quantidade,
             id_estoque,
             id_produto,
@@ -40,13 +40,13 @@ class MovimentacaoController {
 
     async update(req, res) {
         const { id } = req.params;
-        const { tipo, quantidade, id_Estoque, id_Produto } = req.body;
+        const { tipo, quantidade, id_estoque, id_produto } = req.body;
 
         const movimentacao = await Movimentacao.update({
             tipo,
             quantidade,
-            id_Estoque,
-            id_Produto,
+            id_estoque,
+            id_produto,
         }, {
             where: { id },
             returning: true
