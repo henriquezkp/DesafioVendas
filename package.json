@@ -12,8 +12,7 @@
     "doc": "node src/swagger.js"
   },
   "dependencies": {
-    "@sucrase/jest-plugin": "^2.0.0",
-    "@types/jest": "^26.0.21",
+    
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -27,6 +26,8 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
+    "@types/jest": "^26.0.21",
     "cross-env": "^7.0.3",
     "faker": "^5.4.0",
     "jest": "^26.6.3",
