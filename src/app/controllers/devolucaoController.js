@@ -1,9 +1,9 @@
-import Devolucao from '../models/devolucao';
+import Devolucao from '../models/Devolucao';
 
 class DevolucaoController {
 
     async index(req, res) {
-        const devolucoes = await Estadio.findAll();
+        const devolucoes = await Devolucao.findAll();
         return res.json(devolucoes);
     };
 
@@ -18,6 +18,10 @@ class DevolucaoController {
     async store(req, res) {
         const { id_Estoque, id_Produto, id_Motivo, quantidade } = req.body;
 
+        if (!id_Estoque || !id_Produto || !id_Motivo || !quantidade) {
+            return res.status(400).json({ message: 'Dados Inválidos' });
+        }
+
         const devolucao = await Devolucao.create({
             id_Estoque,
             id_Produto,
@@ -31,6 +35,10 @@ class DevolucaoController {
     async update(req, res) {
         const { id } = req.params;
         const { id_Estoque, id_Produto, id_Motivo, quantidade} = req.body;
+
+        if (!id_Estoque || !id_Produto) {
+            return res.status(400).json({ message: 'Para realizar a atualização, é necessario informar o ID do estoque e do produto' });
+        }
 
         const devolucao = await Devolucao.update({
             id_Estoque,

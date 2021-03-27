@@ -1,9 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
 
-import Produto from './produto';
-import Estoque from './estoque'
-
-
 class Movimentacao extends Model {
   static init(sequelize) {
     super.init({
@@ -12,15 +8,19 @@ class Movimentacao extends Model {
         autoIncrement: true,
         primaryKey: true,
       },
-      tipo: {
+      id_tipo: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'tiposDeMovimentacao',
+          key: 'id'
+        },
       },
       quantidade: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      id_Estoque: {
+      id_estoque: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -28,7 +28,7 @@ class Movimentacao extends Model {
           key: 'id'
         },
       },
-      id_Produto: {
+      id_produto: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -45,22 +45,14 @@ class Movimentacao extends Model {
     return this;
   }
 
-  static associate(sequelize) {
-    this.belongsTo(Produto, {
-      foreignKey: 'id_Produto',
-    });
+  static associate(models) {
+    this.belongsTo(models.Produto);
 
-    Produto.hasMany(this, {
-      foreignKey: 'id_Produto',
-    });
+    this.belongsTo(models.Estoque);
 
-    this.belongsTo(Estoque, {
-      foreignKey: 'id_Estoque',
-    });
+    this.belongsTo(models.Tipo);
 
-    Estoque.hasMany(this, {
-      foreignKey: 'id_Estoque',
-    });
+    
   }
 }
 

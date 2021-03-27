@@ -8,11 +8,11 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      tipo: {
+      id_tipo: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'tiposDeMovimentação',
+          model: 'tiposDeMovimentacao',
           key: 'id'
         },
       },
@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      id_Estoque: {
+      id_estoque: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -28,7 +28,7 @@ module.exports = {
           key: 'id'
         },
       },
-      id_Produto: {
+      id_produto: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

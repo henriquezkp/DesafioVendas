@@ -27,3 +27,5 @@ routes.delete(
     '/produtos/:id',
     ProdutoController.delete
 );
+
+export default routes;

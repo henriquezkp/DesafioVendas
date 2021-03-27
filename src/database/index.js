@@ -4,13 +4,30 @@ import config from '../config/database';
 import Devolucao from '../app/models/devolucao';
 import Movimentacao from '../app/models/movimentacao';
 import Produto from '../app/models/produto';
+<<<<<<< HEAD
 import Estoque from '../app/models/estoque';
+=======
+import Categoria from '../app/models/categoria';
+import Motivo from '../app/models/motivo';
+import TiposDeMovimentacao from '../app/models/tipo';
+import Estoque from '../app/models/estoque';
+import EstoqueTotal from '../app/models/estoqueTotal';
+>>>>>>> aaa0771e2da1a160b7e779ab018a70aa15bd0f1d
 
 const models = [
-    Devolucao,
+    Categoria,
+    Produto,
+    Motivo,
+    TiposDeMovimentacao,
     Movimentacao,
+<<<<<<< HEAD
     Produto,
     Estoque
+=======
+    Estoque,
+    Devolucao,
+    EstoqueTotal
+>>>>>>> aaa0771e2da1a160b7e779ab018a70aa15bd0f1d
 ];
 
 class Database {

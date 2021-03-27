@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Devolucao extends Model {
+class EstoqueTotal extends Model {
     static init(sequelize) {
         super.init({
             id: {
@@ -24,14 +24,6 @@ class Devolucao extends Model {
                     key: 'id'
                 },
             },
-            id_motivo: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
-                references: {
-                    model: 'motivos',
-                    key: 'id'
-                },
-            },
             quantidade: {
                 type: Sequelize.INTEGER,
                 allowNull: false
@@ -39,20 +31,16 @@ class Devolucao extends Model {
         },
             {
                 sequelize,
-                tableName: 'devolucoes'
+                tableName: 'estoqueTotal'
             });
 
         return this;
     }
 
     static associate(models) {
-        this.belongsTo(models.Produto);
-
         this.belongsTo(models.Estoque);
-
-        this.belongsTo(models.Motivo);
-
+        this.belongsTo(models.Produto);
     }
 };
 
-export default Devolucao;
+export default EstoqueTotal;

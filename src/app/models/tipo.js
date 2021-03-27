@@ -1,12 +1,11 @@
 import Sequelize, { Model } from 'sequelize';
-import Movimentacao from './movimentacao'
 
-class Estoque extends Model {
+class Tipo extends Model {
     static init(sequelize) {
         super.init({
             id: {
                 type: Sequelize.INTEGER,
-                autoIncrement: true,
+                autoIncrement: false,
                 primaryKey: true
             },
             nome: {
@@ -17,21 +16,16 @@ class Estoque extends Model {
         },
         {
            sequelize,
-           tableName: 'tiposDeMovimentação'
+           tableName: 'tiposDeMovimentacao'
         });
 
         return this;
     }
 
-    static associate(sequelize) {
-        this.belongsTo(Movimentacao, {
-            foreignKey: 'tipo'
-        });
-
-        Movimentacao.hasMany(Produto, {
-            foreignKey: 'tipo'
-        })
+    static associate(models){
+        this.hasMany(models.Movimentacao);
     }
+ 
 }
 
-export default Estoque;
+export default Tipo;
