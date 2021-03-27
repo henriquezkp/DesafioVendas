@@ -3,8 +3,7 @@ import Produto from '../models/Produto';
 class ProdutoController {
 
     async index(req, res) {
-        const produtos = await Produto.findAll({ attributes: ['id', 'nome', 'preco', 'id_categoria'] }
-        );
+        const produtos = await Produto.findAll();
         return res.json(produtos);
     }
 
@@ -28,12 +27,6 @@ class ProdutoController {
         const existente = await Produto.findOne({
             where: { nome: tNome }
         });
-
-        /*let existente = null;
-        const existente = await Produto.findOne({
-            where: { nome: tNome }
-        });*/
-
 
         if (existente) {
             return res.status(400).json({ message: 'Produto já cadastrado' });
