@@ -9,6 +9,7 @@ import RotasEstoques from './app/routes/estoques';
 import RotasCategorias from './app/routes/categorias';
 import RotasDevolucoes from './app/routes/devolucoes';
 import RotasMovimentacoes from './app/routes/movimentacoes';
+import RotasMotivos from './app/routes/motivos';
 
 class App {
     constructor() {
@@ -38,6 +39,7 @@ class App {
         this.server.use(RotasEstoques);
         this.server.use(RotasProdutos);
         this.server.use(RotasMovimentacoes);
+        this.server.use(RotasMotivos);
 
     }
 
