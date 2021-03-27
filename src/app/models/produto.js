@@ -33,7 +33,15 @@ class Produto extends Model {
     }
 
     static associate(models) {
+<<<<<<< HEAD
         this.belongsTo(models.Categoria);
+=======
+        this.belongsTo(models.Categoria,
+            {
+                as: 'Categorias',
+                foreignKey: 'id_categoria'
+            });
+>>>>>>> d9920414c5a6aa90e88aa78fb15823a924a885d9
         this.hasMany(models.Movimentacao);
         this.hasMany(models.Devolucao);
         this.hasMany(models.EstoqueTotal);

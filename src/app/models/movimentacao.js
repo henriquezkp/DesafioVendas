@@ -47,12 +47,19 @@ class Movimentacao extends Model {
 
   static associate(models) {
     this.belongsTo(models.Produto);
+<<<<<<< HEAD
 
     this.belongsTo(models.Estoque);
 
     this.belongsTo(models.Tipo);
 
     
+=======
+
+    this.belongsTo(models.Estoque);
+
+    this.belongsTo(models.Tipo);    
+>>>>>>> d9920414c5a6aa90e88aa78fb15823a924a885d9
   }
 }
 

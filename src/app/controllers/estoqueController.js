@@ -1,4 +1,4 @@
-import Estoque from '../models/estoque';
+import Estoque from '../models/Estoque';
 import sequelize from 'sequelize';
 
 class EstoqueController {

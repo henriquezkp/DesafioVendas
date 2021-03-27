@@ -1,4 +1,4 @@
-import Produto from '../models/produto';
+import Produto from '../models/Produto';
 
 class ProdutoController {
 
@@ -24,10 +24,17 @@ class ProdutoController {
         }
 
         let tNome = nome.toUpperCase();
+<<<<<<< HEAD
 
         const existente = await Produto.findOne({
             where: { nome: tNome }
         });
+=======
+let existente = null;
+        /*const existente = await Produto.findOne({
+            where: { nome: tNome }
+        });*/
+>>>>>>> d9920414c5a6aa90e88aa78fb15823a924a885d9
 
         if (existente) {
             return res.status(400).json({ message: 'Produto já cadastrado' });
