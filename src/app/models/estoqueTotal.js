@@ -8,7 +8,7 @@ class EstoqueTotal extends Model {
                 autoIncrement: true,
                 primaryKey: true,
             },
-            id_Estoque: {
+            id_estoque: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
@@ -16,7 +16,7 @@ class EstoqueTotal extends Model {
                     key: 'id'
                 },
             },
-            id_Produto: {
+            id_produto: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {

@@ -1,4 +1,4 @@
-import Movimentacao from '../models/movimentacao';
+import Movimentacao from '../models/Movimentacao';
 
 class MovimentacaoController {
 

@@ -8,7 +8,7 @@ class Movimentacao extends Model {
         autoIncrement: true,
         primaryKey: true,
       },
-      id_Tipo: {
+      id_tipo: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -20,7 +20,7 @@ class Movimentacao extends Model {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      id_Estoque: {
+      id_estoque: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -28,7 +28,7 @@ class Movimentacao extends Model {
           key: 'id'
         },
       },
-      id_Produto: {
+      id_produto: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -50,9 +50,7 @@ class Movimentacao extends Model {
 
     this.belongsTo(models.Estoque);
 
-    this.belongsTo(models.Tipo);
-
-    
+    this.belongsTo(models.Tipo);    
   }
 }
 

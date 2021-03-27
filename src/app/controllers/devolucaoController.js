@@ -1,10 +1,10 @@
-import Devolucao from '../models/devolucao';
+import Devolucao from '../models/Devolucao';
 
 class DevolucaoController {
 
     async index(req, res) {
-        //const devolucoes = await Estadio.findAll();
-        return res.json({message: "ok"});
+        const devolucoes = await Devolucao.findAll();
+        return res.json(devolucoes);
     };
 
     async show(req, res) {

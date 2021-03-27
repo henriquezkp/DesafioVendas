@@ -1,6 +1,6 @@
 import sequelize from 'sequelize';
-import Produto from '../models/produto';
-import Categoria from './../models/categoria';
+import Produto from '../models/Produto';
+import Categoria from './../models/Categoria';
 
 class CategoriaController {
     async index(req, res) {

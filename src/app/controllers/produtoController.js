@@ -1,4 +1,4 @@
-import Produto from '../models/produto';
+import Produto from '../models/Produto';
 
 class ProdutoController {
 
