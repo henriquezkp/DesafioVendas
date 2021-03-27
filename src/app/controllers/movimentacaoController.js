@@ -7,6 +7,7 @@ class MovimentacaoController {
         return res.json(movimentacao);
     };
 
+
     async show(req, res) {
         const { id } = req.params;
 
@@ -21,6 +22,7 @@ class MovimentacaoController {
         return res.json(movimentacao);
     };
 
+
     async store(req, res) {
         const { tipo, quantidade, id_estoque, id_produto } = req.body;
 
@@ -33,22 +35,23 @@ class MovimentacaoController {
         const movimentacao = await Movimentacao.create({
             tipo,
             quantidade,
-            id_Estoque,
-            id_Produto,
+            id_estoque,
+            id_produto,
         });
 
         return res.json(movimentacao);
     }
 
+
     async update(req, res) {
         const { id } = req.params;
-        const { tipo, quantidade, id_Estoque, id_Produto } = req.body;
+        const { tipo, quantidade, id_estoque, id_produto } = req.body;
 
         const movimentacao = await Movimentacao.update({
             tipo,
             quantidade,
-            id_Estoque,
-            id_Produto,
+            id_estoque,
+            id_produto,
         }, {
             where: { id },
             returning: true            
