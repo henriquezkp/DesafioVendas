@@ -1,4 +1,4 @@
-import Motivo from "../models/motivo";
+import Motivo from "../models/Motivo";
 
 class motivoController {
     async index(req, res) {
