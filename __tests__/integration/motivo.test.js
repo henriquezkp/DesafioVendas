@@ -28,23 +28,13 @@ describe('Testes em Motivo', () => {
     
          });
 
-    it('deveria retornar um erro 400 ao tentar criar um motivo sem nome', async () => {
-
-            expect.assertions(1);
     
-            const result = await request(app)
-            .post('/motivos')
-            .send({
-               
-            });
-    
-            expect(result.status).toBe(400);
             
     
          
         
              
-        });
+    
     
 
     it('Deveria retornar todos os motivos cadastrados', async () => {

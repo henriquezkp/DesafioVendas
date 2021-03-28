@@ -10,7 +10,7 @@ describe('Testes em Produto', () => {
         await truncate();
 
     })
-    it('deveria criar um novo produto', async () => {
+  /*  it('deveria criar um novo produto', async () => {
 
         expect.assertions(2);
 
@@ -26,7 +26,7 @@ describe('Testes em Produto', () => {
         expect(result.body).toHaveProperty('id');
 
     });
-
+*/
     it('deveria retornar um erro 400 ao tentar criar uma categoria sem nome', async () => {
 
         expect.assertions(1);

@@ -59,12 +59,12 @@ describe('Estoque', () => {
         expect(result.body.length).toBeGreaterThan(0);
     });
 
-    /*it('Deveria retornar apenas um estoque cadastrado' , async () => {
+    it('Deveria retornar apenas um estoque cadastrado' , async () => {
       
 
 
       const estoque = await Estoque.findOne({
-          where: { nome: 'estoque' }
+          where: { id: 1 }
       })
 
     
@@ -77,8 +77,9 @@ describe('Estoque', () => {
         expect(result.status).toBe(200);
     
 
-    })
-    */
+    });
+
+  
 
     
 })
