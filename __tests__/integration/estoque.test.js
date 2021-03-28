@@ -30,6 +30,24 @@ describe('Estoque', () => {
          
     });
 
+    it('deveria retornar um erro 400 ao tentar criar um estoque sem nome', async () => {
+
+        expect.assertions(1);
+
+        const result = await request(app)
+        .post('/estoques')
+        .send({
+           
+        });
+
+        expect(result.status).toBe(400);
+        
+
+     
+    
+         
+    });
+
     it('Deveria retornar todos os estoques cadastrados', async () => {
 
         expect.assertions(2);
@@ -41,7 +59,7 @@ describe('Estoque', () => {
         expect(result.body.length).toBeGreaterThan(0);
     });
 
-    it('Deveria retornar apenas um estoque cadastrado' , async () => {
+    /*it('Deveria retornar apenas um estoque cadastrado' , async () => {
       
 
 
@@ -60,7 +78,7 @@ describe('Estoque', () => {
     
 
     })
-    
+    */
 
     
 })
