@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.1% </span>
+                <span class="strong">39.74% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/78</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>5/10</span>
+                <span class='fraction'>31/78</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">66.67% </span>
-                <span class="quiet">Functions</span>
+                <span class="quiet">Branches</span>
                 <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.1% </span>
+                <span class="strong">50% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>3/6</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">39.74% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/78</span>
+                <span class='fraction'>31/78</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -168,29 +168,29 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -245,29 +245,29 @@ class ProdutoController {
 <span class="cstat-no" title="statement not covered" >        let tNome = nome.toUpperCase();</span>
 <span class="cstat-no" title="statement not covered" ></span>
         const existente = await Produto.findOne({
-            where: { nome: tNome }
-        });
-&nbsp;
-        if (existente) {
-            return res.status(400).json({ message: <span class="branch-0 cbranch-no" title="branch not covered" >'Produto já cadastrado' });</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >            where: { nome: tNome }</span></span>
+<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        if (existente) {</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(400).json({ message: 'Produto já cadastrado' });</span>
 <span class="cstat-no" title="statement not covered" >        } else {</span>
-            const produto = await Produto.create({
-                id_categoria,
-                nome: tNome,
-                preco,
-            });
-            return res.status(200).json(produto);
-        }
-    }
-<span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" >            const produto = await Produto.create({</span>
+<span class="cstat-no" title="statement not covered" >                id_categoria,</span>
+<span class="cstat-no" title="statement not covered" >                nome: tNome,</span>
+<span class="cstat-no" title="statement not covered" >                preco,</span>
+<span class="cstat-no" title="statement not covered" >            });</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(200).json(produto);</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    async update(req, res) {</span>
 <span class="cstat-no" title="statement not covered" >        const { id } = req.params;</span>
-        const { id_categoria, nome, preco } = req.body;
-        let tNome = nome.toUpperCase();
-&nbsp;
-        const produto = await Produto.update({
-            id_categoria,
-            nome: <span class="branch-0 cbranch-no" title="branch not covered" >tNome,</span>
+<span class="cstat-no" title="statement not covered" >        const { id_categoria, nome, preco } = req.body;</span>
+<span class="cstat-no" title="statement not covered" >        let tNome = nome.toUpperCase();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        const produto = await Produto.update({</span>
+<span class="cstat-no" title="statement not covered" >            id_categoria,</span>
+<span class="cstat-no" title="statement not covered" >            nome: tNome,</span>
 <span class="cstat-no" title="statement not covered" >            preco</span>
 <span class="cstat-no" title="statement not covered" >        }, {</span>
 <span class="cstat-no" title="statement not covered" >            where: { id }</span>
@@ -295,7 +295,7 @@ class ProdutoController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Mar 28 2021 17:45:28 GMT-0300 (GMT-03:00)
+                at Sun Mar 28 2021 18:00:25 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../prettify.js"></script>
