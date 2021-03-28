@@ -11,6 +11,7 @@ import RotasDevolucoes from './app/routes/devolucoes';
 import RotasMovimentacoes from './app/routes/movimentacoes';
 import RotasMotivos from './app/routes/motivos';
 import RotasTipos from './app/routes/tiposMovimentacoes';
+import RotasDocs from './app/routes/docs';
 
 class App {
     constructor() {
@@ -35,6 +36,7 @@ class App {
 
     routers() {
         //this.server.use(rota...)
+        this.server.use(RotasDocs);
         this.server.use(RotasCategorias);
         this.server.use(RotasDevolucoes);
         this.server.use(RotasEstoques);

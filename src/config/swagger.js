@@ -1,21 +1,37 @@
-const { Categoria, CategoriaCreate } = 
+const { Categoria, CategoriaCreate } =
     require('../app/documentation/Categoria');
+    
+const { Produto, ProdutoCreate } =
+    require('../app/documentation/Produto');
 
 module.exports = {
     info: {
         version: '1.1.1',
-        title: 'API Vendas',
-        description: 'Api para controle de vendas e devoluções de mercadorias',        
+        title: 'API Vendas/Devoluções',
+        description: 'Api para controle de vendas e devoluções de mercadorias',
     },
     host: 'localhost:3000',
     schemes: ['http'],
     consumes: ['application/json'],
     produces: ['application/json'],
+    securityDefinitions: {
+        JWT: {
+            description: 'JWT Token',
+            type: 'apiKey',
+            in: 'header',
+            name: 'Authorization',
+        },
+    },
     definitions: {
         Categoria,
-        ListaDeCategoria: [
+        ListaDeCategorias: [
             Categoria
         ],
         CategoriaCreate,
+        Produto,
+        ListaDeProdutos: [
+            Produto
+        ],
+        ProdutoCreate,
     }
 }
