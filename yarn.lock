@@ -5101,10 +5101,10 @@ supports-hyperlinks@^2.0.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-swagger-autogen@^2.7.2:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/swagger-autogen/-/swagger-autogen-2.7.3.tgz#30a5acce39b827d8a63644b38919c64a62650238"
-  integrity sha512-3jCJkzI/OMrx2rcNjIbwsje+l50kaGWSCpp/HSkReKpz9Qt4GJermlXphplXl62Ve9/5oaris90HcHw1++LURA==
+swagger-autogen@^2.7.6:
+  version "2.7.6"
+  resolved "https://registry.yarnpkg.com/swagger-autogen/-/swagger-autogen-2.7.6.tgz#ec76042efcf629abdf8823d3ae59db7904878c16"
+  integrity sha512-AimQlcJNfBTpGkg7Mdnlx3vO3WPbEvkStDj4xd4B+85za8TEe8RBRZcw/AKNX8+LoAFv6HK5S1DdJWH6rDZVVg==
   dependencies:
     json5 "^2.2.0"
 
