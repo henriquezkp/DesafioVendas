@@ -27,7 +27,7 @@ routes.get(
     /*
         #swagger.parameters['id'] = {
             in: 'path',
-            description: 'Id do produtos',
+            description: 'Id do produto',
             required: true,
             type: 'integer' 
         }
@@ -42,7 +42,7 @@ routes.get(
     /*
        #swagger.responses[404] = {
            schema: {
-               msg: 'Produto     não encontrado.'
+               msg: 'Produto não encontrado.'
            }
        }
     */
@@ -82,28 +82,59 @@ routes.post(
 routes.put(
     '/produtos/:id',
     ProdutoController.update
-     // #swagger.description = 'Atualizar produto'
+    // #swagger.description = 'Atualizar um produto'
     // #swagger.tags = ['Produtos']
     // #swagger.security = [{JWT: []}]
     /*
+        #swagger.parameters['produto'] = {
+            in: 'body',
+            description: "Dados do produto",
+            schema: {
+                "$ref": "#/definitions/ProdutoUpdated"
+            }
+        }
+    */
+    /*
        #swagger.responses[200] = {
            schema: {
-               "$ref": "#/definitions/ListaDeProdutos"
+               "$ref": "#/definitions/Produto"
            }
        }
     */
+    /*
+    #swagger.responses[400] = {
+        schema: {
+            msg: "Dados inválidos."
+        }
+    }
+ */
 );
 
 routes.delete(
     '/produtos/:id',
     ProdutoController.delete
-     // #swagger.description = 'Deletar produto'
+    // #swagger.description = 'Deleta um produto pelo ID'
     // #swagger.tags = ['Produtos']
     // #swagger.security = [{JWT: []}]
     /*
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'Id do produto',
+            required: true,
+            type: 'integer' 
+        }
+    */
+    /*
        #swagger.responses[200] = {
            schema: {
-               "$ref": "#/definitions/ListaDeProdutos"
+               "$ref": "#/definitions/ProdutoDelete"
+           }
+       }
+    */
+    /*
+       #swagger.responses[404] = {
+           schema: {
+               msg: 'Produto não encontrado.'
            }
        }
     */

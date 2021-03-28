@@ -1,8 +1,11 @@
 const { Categoria, CategoriaCreate } =
     require('../app/documentation/Categoria');
-    
-const { Produto, ProdutoCreate } =
+
+const { Produto, ProdutoCreate, ProdutoUpdated, ProdutoDelete } =
     require('../app/documentation/Produto');
+
+const { Estoque, EstoqueCreate, EstoqueUpdated, EstoqueDelete } =
+    require('../app/documentation/Estoque');
 
 module.exports = {
     info: {
@@ -33,5 +36,14 @@ module.exports = {
             Produto
         ],
         ProdutoCreate,
+        ProdutoUpdated,
+        ProdutoDelete,
+        Estoque,
+        ListaDeEstoques: [
+            Estoque
+        ],
+        EstoqueCreate,
+        EstoqueUpdated,
+        EstoqueDelete
     }
 }

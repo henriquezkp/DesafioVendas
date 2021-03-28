@@ -163,7 +163,7 @@
             "in": "path",
             "required": true,
             "type": "integer",
-            "description": "Id do produtos"
+            "description": "Id do produto"
           }
         ],
         "responses": {
@@ -199,7 +199,7 @@
         "tags": [
           "Produtos"
         ],
-        "description": "Atualizar produto",
+        "description": "Atualizar um produto",
         "parameters": [
           {
             "name": "id",
@@ -208,24 +208,11 @@
             "type": "string"
           },
           {
-            "name": "obj",
+            "name": "produto",
             "in": "body",
+            "description": "Dados do produto",
             "schema": {
-              "type": "object",
-              "properties": {
-                "id_categoria": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "nome": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "preco": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/ProdutoUpdated"
             }
           }
         ],
@@ -233,8 +220,23 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ListaDeProdutos"
+              "$ref": "#/definitions/Produto"
             }
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
           }
         },
         "security": [
@@ -247,21 +249,37 @@
         "tags": [
           "Produtos"
         ],
-        "description": "Deletar produto",
+        "description": "Deleta um produto pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id do produto"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ListaDeProdutos"
+              "$ref": "#/definitions/ProdutoDelete"
             }
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Produto não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
           }
         },
         "security": [
@@ -273,67 +291,122 @@
     },
     "/estoques": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Listagem de Estoques",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListaDeEstoques"
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "post": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Criar um novo estoque",
         "parameters": [
           {
-            "name": "obj",
+            "name": "estoque",
             "in": "body",
+            "description": "Dados do estoque",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/EstoqueCreate"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/estoques/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Obtem um estoque pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id do estoque"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Estoque não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Atualizar um estoque",
         "parameters": [
           {
             "name": "id",
@@ -342,47 +415,88 @@
             "type": "string"
           },
           {
-            "name": "obj",
+            "name": "estoque",
             "in": "body",
+            "description": "Dados do estoque",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/EstoqueUpdated"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Estoque"
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Estoques"
+        ],
+        "description": "Deleta um estoque pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id do estoque"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EstoqueDelete"
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Estoque não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/movimentacoes": {
@@ -947,6 +1061,118 @@
         "id_categoria",
         "name",
         "preco"
+      ]
+    },
+    "ProdutoUpdated": {
+      "type": "object",
+      "properties": {
+        "id_categoria": {
+          "type": "number",
+          "example": 5
+        },
+        "name": {
+          "type": "string",
+          "example": "Melita"
+        },
+        "preco": {
+          "type": "number",
+          "example": 10
+        }
+      },
+      "required": [
+        "id_categoria",
+        "name",
+        "preco"
+      ]
+    },
+    "ProdutoDelete": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Melita"
+        },
+        "preco": {
+          "type": "number",
+          "example": 10
+        }
+      },
+      "required": [
+        "name",
+        "preco"
+      ]
+    },
+    "Estoque": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "CENTRO"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "ListaDeEstoques": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "CENTRO"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      }
+    },
+    "EstoqueCreate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "CENTRO"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "EstoqueUpdated": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "CENTRO"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "EstoqueDelete": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "CENTRO"
+        }
+      },
+      "required": [
+        "name"
       ]
     }
   }
