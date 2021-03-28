@@ -4,7 +4,7 @@ class MovimentacaoController {
 
     async index(req, res) {
         const movimentacao = await Movimentacao.findAll();
-        return res.json(movimentacao);
+        return res.status(200).json(movimentacao);
     };
 
 
@@ -12,12 +12,12 @@ class MovimentacaoController {
         const { id } = req.params;
 
         if (!id) {
-            return res.status(400).json({ message: 'Movimentação não encotrado' });
+            return res.status(400).json({ message: 'Movimentação não encontrada' });
         };
 
         const movimentacao = await Movimentacao.findByPk(id);
 
-        return res.json(movimentacao);
+        return res.status(200).json(movimentacao);
     };
 
 
@@ -37,7 +37,7 @@ class MovimentacaoController {
             id_produto,
         });
 
-        return res.json(movimentacao);
+        return res.status(200).json(movimentacao);
     }
 
 
@@ -55,7 +55,7 @@ class MovimentacaoController {
             returning: true
         });
 
-        return res.json(movimentacao);
+        return res.status(200).json(movimentacao);
     }
 
     async delete(req, res) {
@@ -72,7 +72,7 @@ class MovimentacaoController {
             returning: true
         });
 
-        return res.json(movimentacao);
+        return res.status(200).json(movimentacao);
     }
 }
 

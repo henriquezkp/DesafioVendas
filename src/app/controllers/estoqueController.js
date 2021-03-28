@@ -6,15 +6,20 @@ class EstoqueController {
     async index(req, res) {
         const estoques = await Estoque.findAll()
 
-        return res.json(estoques);
+        return res.status(200).json(estoques);
     }
 
     async show(req, res) {
         const { id } = req.params;
 
+        if (!id) {
+            return res.status(400).json({ message: 'Estoque não encontrado' });
+        };
+
+
         const estoque = await Estoque.findByPk(id);
 
-        return res.json(estoque);
+        return res.status(200).json(estoque);
 
     }
 
