@@ -501,79 +501,122 @@
     },
     "/movimentacoes": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Movimentações"
+        ],
+        "description": "Listagem de Movimentações\r \n \n \n#swagger.tags = [",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListaDeMovimentacoes"
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "post": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Movimentações"
+        ],
+        "description": "Criar uma nova movimentção",
         "parameters": [
           {
-            "name": "obj",
+            "name": "movimentacao",
             "in": "body",
+            "description": "Dados da movimentação",
             "schema": {
-              "type": "object",
-              "properties": {
-                "id_tipo": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "quantidade": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_estoque": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_produto": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/MovimentacaoCreate"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Movimentacao"
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/movimentacoes/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Movimentações"
+        ],
+        "description": "Obtem uma movimentação pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id da movimentação"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Movimentacao"
+            }
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Movimentação não encontrada."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Movimentações"
+        ],
+        "description": "Atualizar uma movimentacao",
         "parameters": [
           {
             "name": "id",
@@ -582,56 +625,88 @@
             "type": "string"
           },
           {
-            "name": "obj",
+            "name": "movimentacao",
             "in": "body",
+            "description": "Dados da movimentação",
             "schema": {
-              "type": "object",
-              "properties": {
-                "tipo": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "quantidade": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_estoque": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_produto": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/MovimentacaoUpdated"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Movimentacao"
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Movimentações"
+        ],
+        "description": "Deleta uma movimentação pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id da movimentação"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MovimentacaoDelete"
+            }
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Estoque não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/tipos": {
@@ -1174,6 +1249,142 @@
       "required": [
         "name"
       ]
+    },
+    "Movimentacao": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "id_tipo": {
+          "type": "number",
+          "example": 1
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        },
+        "id_estoque": {
+          "type": "number",
+          "example": 1
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "id",
+        "id_tipo",
+        "quantidade",
+        "id_estoque",
+        "id_produto"
+      ]
+    },
+    "ListaDeMovimentacaos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "id_tipo": {
+            "type": "number",
+            "example": 1
+          },
+          "quantidade": {
+            "type": "number",
+            "example": 100
+          },
+          "id_estoque": {
+            "type": "number",
+            "example": 1
+          },
+          "id_produto": {
+            "type": "number",
+            "example": 1
+          }
+        },
+        "required": [
+          "id",
+          "id_tipo",
+          "quantidade",
+          "id_estoque",
+          "id_produto"
+        ]
+      }
+    },
+    "MovimentacaoCreate": {
+      "type": "object",
+      "properties": {
+        "id_tipo": {
+          "type": "number",
+          "example": 1
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        },
+        "id_estoque": {
+          "type": "number",
+          "example": 1
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "id_tipo",
+        "quantidade",
+        "id_estoque",
+        "id_produto"
+      ]
+    },
+    "MovimentacaoUpdated": {
+      "type": "object",
+      "properties": {
+        "id_tipo": {
+          "type": "number",
+          "example": 1
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        },
+        "id_estoque": {
+          "type": "number",
+          "example": 1
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    },
+    "MovimentacaoDelete": {
+      "type": "object",
+      "properties": {
+        "id_tipo": {
+          "type": "number",
+          "example": 1
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        },
+        "id_estoque": {
+          "type": "number",
+          "example": 1
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 1
+        }
+      }
     }
   }
 }
