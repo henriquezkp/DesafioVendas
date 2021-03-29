@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../../src/app';
-import Motivo from '../../src/app/models/Motivo';
+import Motivo from '../../src/app/models/motivo';
 import truncate from '../utils/truncate';
 
 

@@ -35,7 +35,7 @@ class Produto extends Model {
     static associate(models) {
 
         this.belongsTo(models.Categoria, {
-            foreignKey: 'id'
+            foreignKey: 'id_categoria'
         });
         this.hasMany(models.Movimentacao, {
             foreignKey: 'id'
