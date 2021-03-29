@@ -7,6 +7,9 @@ const { Produto, ProdutoCreate, ProdutoUpdated, ProdutoDelete } =
 const { Estoque, EstoqueCreate, EstoqueUpdated, EstoqueDelete } =
     require('../app/documentation/Estoque');
 
+const { Movimentacao, MovimentacaoCreate, MovimentacaoUpdated, MovimentacaoDelete } =
+    require('../app/documentation/Movimentacao');
+
 module.exports = {
     info: {
         version: '1.1.1',
@@ -44,6 +47,13 @@ module.exports = {
         ],
         EstoqueCreate,
         EstoqueUpdated,
-        EstoqueDelete
+        EstoqueDelete,
+        Movimentacao,
+        ListaDeMovimentacaos: [
+            Movimentacao
+        ],
+        MovimentacaoCreate,
+        MovimentacaoUpdated,
+        MovimentacaoDelete
     }
 }
