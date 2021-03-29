@@ -5,9 +5,9 @@ import truncate from '../utils/truncate';
 
 
 describe('Testes em Motivo', () => {
-   
- 
-    beforeAll( async () => {
+
+
+    beforeAll(async () => {
         await truncate();
 
     })
@@ -16,37 +16,28 @@ describe('Testes em Motivo', () => {
         expect.assertions(2);
 
         const result = await request(app)
-        .post('/motivos')
-        .send({
-            nome: 'Produto com defeito'
-        });
+            .post('/motivos')
+            .send({
+                nome: 'Produto com defeito'
+            });
 
         expect(result.status).toBe(200);
         expect(result.body).toHaveProperty('id');
 
-     
-    
-         });
 
-    
-            
-    
-         
-        
-             
-    
-    
+
+    });
 
     it('Deveria retornar todos os motivos cadastrados', async () => {
 
         expect.assertions(2);
 
         const result = await request(app)
-        .get('/motivos');
+            .get('/motivos');
 
         expect(result.status).toBe(200);
         expect(result.body.length).toBeGreaterThan(0);
     });
 
-  
+
 })

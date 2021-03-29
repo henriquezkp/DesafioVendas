@@ -29,7 +29,7 @@ describe('Testes em Categoria', () => {
          
     });
 
-    it('Deveria retornar todos as categorias cadastradas', async () => {
+    it('Deveria retornar todas as categorias cadastradas', async () => {
 
         expect.assertions(2);
 
