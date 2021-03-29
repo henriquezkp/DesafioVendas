@@ -1,5 +1,7 @@
 import Produto from '../models/produto';
 import Categoria from './../models/categoria';
+import sequelize from 'sequelize';
+
 
 
 class CategoriaController {

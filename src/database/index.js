@@ -1,14 +1,14 @@
 import Sequelize from 'sequelize';
 import config from '../config/database';
 
-import Categoria from '../app/models/Categoria';
-import Produto from '../app/models/Produto';
-import Motivo from '../app/models/Motivo';
-import TiposDeMovimentacao from '../app/models/Tipo';
-import Movimentacao from '../app/models/Movimentacao';
-import Estoque from '../app/models/Estoque';
-import Devolucao from '../app/models/Devolucao';
-import EstoqueTotal from '../app/models/EstoqueTotal';
+import Categoria from '../app/models/categoria';
+import Produto from '../app/models/produto';
+import Motivo from '../app/models/motivo';
+import TiposDeMovimentacao from '../app/models/tipo';
+import Movimentacao from '../app/models/movimentacao';
+import Estoque from '../app/models/estoque';
+import Devolucao from '../app/models/devolucao';
+import EstoqueTotal from '../app/models/estoqueTotal';
 
 
 const models = [

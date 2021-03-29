@@ -1,6 +1,7 @@
 import request from 'supertest';
 import app from '../../src/app';
 import Produto from '../../src/app/models/produto';
+import Categoria from '../../src/app/models/categoria';
 import truncate from '../utils/truncate';
 
 describe('Testes em Produto', () => {
