@@ -10,6 +10,15 @@ const { Estoque, EstoqueCreate, EstoqueUpdated, EstoqueDelete } =
 const { Movimentacao, MovimentacaoCreate, MovimentacaoUpdated, MovimentacaoDelete } =
     require('../app/documentation/Movimentacao');
 
+const { TipoMovimentacao, TipoMovimentacaoCreate, TipoMovimentacaoUpdated, TipoMovimentacaoDelete } =
+    require('../app/documentation/TipoMovimentacao');
+
+const { Devolucao, DevolucaoCreate, DevolucaoUpdated, DevolucaoDelete } =
+    require('../app/documentation/Devolucao');
+
+const { Motivo, MotivoCreate, MotivoUpdated, MotivoDelete } =
+    require('../app/documentation/Motivo');
+
 module.exports = {
     info: {
         version: '1.1.1',
@@ -54,6 +63,27 @@ module.exports = {
         ],
         MovimentacaoCreate,
         MovimentacaoUpdated,
-        MovimentacaoDelete
+        MovimentacaoDelete,
+        TipoMovimentacao,
+        ListaDeTipoMovimentacaos: [
+            TipoMovimentacao
+        ],
+        TipoMovimentacaoCreate,
+        TipoMovimentacaoUpdated,
+        TipoMovimentacaoDelete,
+        Devolucao,
+        ListaDeDevolucaos: [
+            Devolucao
+        ],
+        DevolucaoCreate,
+        DevolucaoUpdated,
+        DevolucaoDelete,
+        Motivo,
+        ListaDeMotivos: [
+            Motivo
+        ],
+        MotivoCreate,
+        MotivoUpdated,
+        MotivoDelete
     }
 }

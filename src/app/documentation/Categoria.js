@@ -1,8 +1,8 @@
 exports.Categoria = {
     $id: 1,
-    $name: 'Alimentos',
+    $nome: 'Alimentos',
 };
 
 exports.CategoriaCreate = {
-    $name: 'Alimentos',
+    $nome: 'Alimentos',
 };
