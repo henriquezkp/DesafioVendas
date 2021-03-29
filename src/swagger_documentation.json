@@ -711,56 +711,119 @@
     },
     "/tipos": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Tipos"
+        ],
+        "description": "Listagem dos Tipos de Movimentações",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ListaDeTipos"
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "post": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Tipos"
+        ],
+        "description": "Criar um novo tipo de movimentação",
         "parameters": [
           {
-            "name": "obj",
+            "name": "tipo",
             "in": "body",
+            "description": "Dados do tipo de movimentação",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/TipoCreate"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tipo"
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/tipos/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Tipos"
+        ],
+        "description": "Obtem um tipo de movimentação pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id do tipo de movimentação"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Tipo"
+            },
+            "description": "OK"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Tipo de movimentação não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Tipos"
+        ],
+        "description": "Atualizar um tipo de movimentação",
         "parameters": [
           {
             "name": "id",
@@ -769,110 +832,205 @@
             "type": "string"
           },
           {
-            "name": "obj",
+            "name": "tipo",
             "in": "body",
+            "description": "Dados do tipo de movimentação",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/TipoUpdated"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tipo"
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
           },
           "404": {
             "description": "Not Found"
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Tipos"
+        ],
+        "description": "Deleta um tipo de movimentação pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id do tipo de movimentação"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TipoDelete"
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Not Found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Tipo de movimentação não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/devolucoes": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Devoluções"
+        ],
+        "description": "Listagem de Devoluções",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ListaDeDevolucoes"
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "post": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Devoluções"
+        ],
+        "description": "Criar uma nova devolução",
         "parameters": [
           {
-            "name": "obj",
+            "name": "devolucao",
             "in": "body",
+            "description": "Dados da devolução",
             "schema": {
-              "type": "object",
-              "properties": {
-                "id_estoque": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_produto": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_motivo": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "quantidade": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/DevolucaoCreate"
             }
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Devolucao"
+            },
+            "description": "OK"
+          },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/devolucoes/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Devoluções"
+        ],
+        "description": "Obtem uma devolução pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id da devolução"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Devolucao"
+            },
+            "description": "OK"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Devolução não encontrada."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Devoluções"
+        ],
+        "description": "Atualizar uma devolução",
         "parameters": [
           {
             "name": "id",
@@ -881,96 +1039,202 @@
             "type": "string"
           },
           {
-            "name": "obj",
+            "name": "devolucao",
             "in": "body",
+            "description": "Dados da devolução",
             "schema": {
-              "type": "object",
-              "properties": {
-                "id_Estoque": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_Produto": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "id_Motivo": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "quantidade": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/DevolucaoUpdated"
             }
           }
         ],
         "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Devolucao"
+            },
+            "description": "OK"
+          },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Devoluções"
+        ],
+        "description": "Deleta uma devolução pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id da devolução"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/DevolucaoDelete"
+            },
+            "description": "OK"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Devolução não encontrada."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/motivos": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Motivos"
+        ],
+        "description": "Listagem de Motivos",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/ListaDeMotivos"
+            },
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "post": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Motivos"
+        ],
+        "description": "Criar um novo motivo",
         "parameters": [
           {
-            "name": "obj",
+            "name": "motivo",
             "in": "body",
+            "description": "Dados do motivo",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/MotivoCreate"
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Motivo"
+            },
+            "description": "OK"
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/motivos/{id}": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Motivos"
+        ],
+        "description": "Obtem um motivo pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id do motivo"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Motivo"
+            },
+            "description": "OK"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Motivo não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "put": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Motivos"
+        ],
+        "description": "Atualizar um motivo",
         "parameters": [
           {
             "name": "id",
@@ -979,33 +1243,85 @@
             "type": "string"
           },
           {
-            "name": "obj",
+            "name": "motivo",
             "in": "body",
+            "description": "Dados do motivo",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "type": "string",
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/MotivoUpdated"
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Motivo"
+            },
+            "description": "OK"
+          },
+          "400": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Dados inválidos."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       },
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "Motivos"
+        ],
+        "description": "Deleta um motivo pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer",
+            "description": "Id do motivo"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/MotivoDelete"
+            },
+            "description": "OK"
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Motivo não encontrado."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     }
   },
@@ -1017,14 +1333,14 @@
           "type": "number",
           "example": 1
         },
-        "name": {
+        "nome": {
           "type": "string",
           "example": "Alimentos"
         }
       },
       "required": [
         "id",
-        "name"
+        "nome"
       ]
     },
     "ListaDeCategorias": {
@@ -1036,27 +1352,27 @@
             "type": "number",
             "example": 1
           },
-          "name": {
+          "nome": {
             "type": "string",
             "example": "Alimentos"
           }
         },
         "required": [
           "id",
-          "name"
+          "nome"
         ]
       }
     },
     "CategoriaCreate": {
       "type": "object",
       "properties": {
-        "name": {
+        "nome": {
           "type": "string",
           "example": "Alimentos"
         }
       },
       "required": [
-        "name"
+        "nome"
       ]
     },
     "Produto": {
@@ -1070,7 +1386,7 @@
           "type": "number",
           "example": 5
         },
-        "name": {
+        "nome": {
           "type": "string",
           "example": "Melita"
         },
@@ -1082,7 +1398,7 @@
       "required": [
         "id",
         "id_categoria",
-        "name",
+        "nome",
         "preco"
       ]
     },
@@ -1099,7 +1415,7 @@
             "type": "number",
             "example": 5
           },
-          "name": {
+          "nome": {
             "type": "string",
             "example": "Melita"
           },
@@ -1111,7 +1427,7 @@
         "required": [
           "id",
           "id_categoria",
-          "name",
+          "nome",
           "preco"
         ]
       }
@@ -1123,7 +1439,7 @@
           "type": "number",
           "example": 5
         },
-        "name": {
+        "nome": {
           "type": "string",
           "example": "Melita"
         },
@@ -1134,7 +1450,7 @@
       },
       "required": [
         "id_categoria",
-        "name",
+        "nome",
         "preco"
       ]
     },
@@ -1145,7 +1461,7 @@
           "type": "number",
           "example": 5
         },
-        "name": {
+        "nome": {
           "type": "string",
           "example": "Melita"
         },
@@ -1156,14 +1472,14 @@
       },
       "required": [
         "id_categoria",
-        "name",
+        "nome",
         "preco"
       ]
     },
     "ProdutoDelete": {
       "type": "object",
       "properties": {
-        "name": {
+        "nome": {
           "type": "string",
           "example": "Melita"
         },
@@ -1173,7 +1489,7 @@
         }
       },
       "required": [
-        "name",
+        "nome",
         "preco"
       ]
     },
@@ -1184,14 +1500,14 @@
           "type": "number",
           "example": 1
         },
-        "name": {
+        "nome": {
           "type": "string",
           "example": "CENTRO"
         }
       },
       "required": [
         "id",
-        "name"
+        "nome"
       ]
     },
     "ListaDeEstoques": {
@@ -1203,51 +1519,51 @@
             "type": "number",
             "example": 1
           },
-          "name": {
+          "nome": {
             "type": "string",
             "example": "CENTRO"
           }
         },
         "required": [
           "id",
-          "name"
+          "nome"
         ]
       }
     },
     "EstoqueCreate": {
       "type": "object",
       "properties": {
-        "name": {
+        "nome": {
           "type": "string",
           "example": "CENTRO"
         }
       },
       "required": [
-        "name"
+        "nome"
       ]
     },
     "EstoqueUpdated": {
       "type": "object",
       "properties": {
-        "name": {
+        "nome": {
           "type": "string",
           "example": "CENTRO"
         }
       },
       "required": [
-        "name"
+        "nome"
       ]
     },
     "EstoqueDelete": {
       "type": "object",
       "properties": {
-        "name": {
+        "nome": {
           "type": "string",
           "example": "CENTRO"
         }
       },
       "required": [
-        "name"
+        "nome"
       ]
     },
     "Movimentacao": {
@@ -1385,6 +1701,300 @@
           "example": 1
         }
       }
+    },
+    "TipoMovimentacao": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "string",
+          "example": "Venda"
+        }
+      },
+      "required": [
+        "id",
+        "nome"
+      ]
+    },
+    "ListaDeTipoMovimentacaos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "nome": {
+            "type": "string",
+            "example": "Venda"
+          }
+        },
+        "required": [
+          "id",
+          "nome"
+        ]
+      }
+    },
+    "TipoMovimentacaoCreate": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Venda"
+        }
+      },
+      "required": [
+        "nome"
+      ]
+    },
+    "TipoMovimentacaoUpdated": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Venda"
+        }
+      },
+      "required": [
+        "nome"
+      ]
+    },
+    "TipoMovimentacaoDelete": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Venda"
+        }
+      },
+      "required": [
+        "nome"
+      ]
+    },
+    "Devolucao": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "id_estoque": {
+          "type": "number",
+          "example": 5
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 15
+        },
+        "id_motivo": {
+          "type": "number",
+          "example": 2
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        }
+      },
+      "required": [
+        "id",
+        "id_estoque",
+        "id_produto",
+        "id_motivo",
+        "quantidade"
+      ]
+    },
+    "ListaDeDevolucaos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "id_estoque": {
+            "type": "number",
+            "example": 5
+          },
+          "id_produto": {
+            "type": "number",
+            "example": 15
+          },
+          "id_motivo": {
+            "type": "number",
+            "example": 2
+          },
+          "quantidade": {
+            "type": "number",
+            "example": 100
+          }
+        },
+        "required": [
+          "id",
+          "id_estoque",
+          "id_produto",
+          "id_motivo",
+          "quantidade"
+        ]
+      }
+    },
+    "DevolucaoCreate": {
+      "type": "object",
+      "properties": {
+        "id_estoque": {
+          "type": "number",
+          "example": 5
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 15
+        },
+        "id_motivo": {
+          "type": "number",
+          "example": 2
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        }
+      },
+      "required": [
+        "id_estoque",
+        "id_produto",
+        "id_motivo",
+        "quantidade"
+      ]
+    },
+    "DevolucaoUpdated": {
+      "type": "object",
+      "properties": {
+        "id_estoque": {
+          "type": "number",
+          "example": 5
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 15
+        },
+        "id_motivo": {
+          "type": "number",
+          "example": 2
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        }
+      },
+      "required": [
+        "id_estoque",
+        "id_produto",
+        "id_motivo",
+        "quantidade"
+      ]
+    },
+    "DevolucaoDelete": {
+      "type": "object",
+      "properties": {
+        "id_estoque": {
+          "type": "number",
+          "example": 5
+        },
+        "id_produto": {
+          "type": "number",
+          "example": 15
+        },
+        "id_motivo": {
+          "type": "number",
+          "example": 2
+        },
+        "quantidade": {
+          "type": "number",
+          "example": 100
+        }
+      },
+      "required": [
+        "id_estoque",
+        "id_produto",
+        "id_motivo",
+        "quantidade"
+      ]
+    },
+    "Motivo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 1
+        },
+        "nome": {
+          "type": "number",
+          "example": 5
+        }
+      },
+      "required": [
+        "id",
+        "nome"
+      ]
+    },
+    "ListaDeMotivos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "nome": {
+            "type": "number",
+            "example": 5
+          }
+        },
+        "required": [
+          "id",
+          "nome"
+        ]
+      }
+    },
+    "MotivoCreate": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "number",
+          "example": 5
+        }
+      },
+      "required": [
+        "nome"
+      ]
+    },
+    "MotivoUpdated": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "number",
+          "example": 5
+        }
+      },
+      "required": [
+        "nome"
+      ]
+    },
+    "MotivoDelete": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "number",
+          "example": 5
+        }
+      },
+      "required": [
+        "nome"
+      ]
     }
   }
 }

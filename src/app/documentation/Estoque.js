@@ -1,16 +1,16 @@
 exports.Estoque = {
     $id: 1,
-    $name: 'CENTRO',
+    $nome: 'CENTRO',
 };
 
 exports.EstoqueCreate = {
-    $name: 'CENTRO',
+    $nome: 'CENTRO',
 };
 
 exports.EstoqueUpdated = {
-    $name: 'CENTRO',
+    $nome: 'CENTRO',
 };
 
 exports.EstoqueDelete = {
-    $name: 'CENTRO',
+    $nome: 'CENTRO',
 };
