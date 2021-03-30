@@ -1,4 +1,4 @@
-import Tipo from '../models/Tipo';
+import Tipo from '../models/tipo';
 import sequelize from 'sequelize';
 
 class TipoMovimentacaoController {

@@ -1,5 +1,5 @@
 import sequelize from 'sequelize';
-import EstoqueTotal from '../models/EstoqueTotal';
+import EstoqueTotal from '../models/estoqueTotal';
 
 class EstoqueTotalController {
 

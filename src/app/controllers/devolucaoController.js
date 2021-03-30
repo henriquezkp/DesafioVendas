@@ -1,4 +1,4 @@
-import Devolucao from '../models/Devolucao';
+import Devolucao from '../models/devolucao';
 
 class DevolucaoController {
 

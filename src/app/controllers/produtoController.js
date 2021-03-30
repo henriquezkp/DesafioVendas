@@ -1,5 +1,5 @@
-import Produto from '../models/Produto';
-import Categoria from '../models/Categoria'
+import Produto from '../models/produto';
+import Categoria from '../models/categoria'
 
 class ProdutoController {
 
