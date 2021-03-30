@@ -4,11 +4,24 @@ import Produto from '../../src/app/models/produto';
 import Categoria from '../../src/app/models/categoria';
 import truncate from '../utils/truncate';
 
+let resId = " ";
+
 describe('Testes em Produto', () => {
 
 
     beforeAll(async () => {
         await truncate();
+        const resCategoria = await request(app).post('/categorias')
+        .send({
+            nome: 'Telefones'
+        });
+
+        let { id } = resCategoria.body;
+
+        resId = id
+
+        
+
 
     })
     it('deveria criar um novo produto', async () => {
@@ -18,7 +31,7 @@ describe('Testes em Produto', () => {
         const result = await request(app)
             .post('/produtos')
             .send({
-                id_categoria: 1,
+                id_categoria: resId,
                 nome: 'Cafeteira',
                 preco: 18.00
             });

@@ -64,7 +64,7 @@ describe('Estoque', () => {
 
 
       const estoque = await Estoque.findOne({
-          where: { id: 1 }
+          where: { nome: 'estoque' }
       })
 
     
@@ -77,6 +77,22 @@ describe('Estoque', () => {
         expect(result.status).toBe(200);
     
 
+    });
+
+    it('Should update a Estoque', async () => {
+
+        const estoque = await Estoque.findOne({
+            where: { nome: 'estoque' }
+        })
+
+        const result = await request(app)
+            .put(`/estoques/${estoque.id}`)
+            .send({
+                nome: 'Central',
+                
+            });
+
+        expect(result.status).toBe(200);
     });
 
   
