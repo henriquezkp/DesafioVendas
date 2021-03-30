@@ -38,13 +38,13 @@ class Produto extends Model {
             foreignKey: 'id_categoria'
         });
         this.hasMany(models.Movimentacao, {
-            foreignKey: 'id'
+            foreignKey: 'id_produto'
         });
         this.hasMany(models.Devolucao, {
-            foreignKey: 'id'
+            foreignKey: 'id_produto'
         });
         this.hasMany(models.EstoqueTotal, {
-            foreignKey: 'id'
+            foreignKey: 'id_produto'
         });
     }
 }

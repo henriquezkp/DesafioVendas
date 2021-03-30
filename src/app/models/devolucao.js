@@ -47,12 +47,14 @@ class Devolucao extends Model {
 
     static associate(models) {
         this.belongsTo(models.Produto, {
-            foreignKey: 'id'});
+            foreignKey: 'id_produto'});
 
-        this.belongsTo(models.Estoque);
+        this.belongsTo(models.Estoque,{
+            foreignKey: 'id_estoque'
+        });
 
         this.belongsTo(models.Motivo, {
-            foreignKey: 'id'});
+            foreignKey: 'id_motivo'});
 
     }
 };

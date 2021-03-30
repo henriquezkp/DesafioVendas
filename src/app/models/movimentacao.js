@@ -47,14 +47,14 @@ class Movimentacao extends Model {
 
   static associate(models) {
     this.belongsTo(models.Tipo, {
-      foreignKey: 'id'
+      foreignKey: 'id_tipo'
     });
     this.belongsTo(models.Produto, {
-      foreignKey: 'id'
+      foreignKey: 'id_produto'
     });
 
     this.belongsTo(models.Estoque, {
-      foreignKey: 'id'
+      foreignKey: 'id_estoque'
     });
 
   }

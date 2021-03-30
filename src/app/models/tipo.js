@@ -24,7 +24,7 @@ class Tipo extends Model {
 
     static associate(models){
         this.hasMany(models.Movimentacao, {
-            foreignKey: 'id'});
+            foreignKey: 'id_tipo'});
     }
  
 }

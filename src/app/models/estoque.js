@@ -23,13 +23,13 @@ class Estoque extends Model {
 
     static associate(models) {
         this.hasMany(models.Movimentacao, {
-            foreignKey: 'id'
+            foreignKey: 'id_estoque'
         });
         this.hasMany(models.Devolucao, {
-            foreignKey: 'id'
+            foreignKey: 'id_estoque'
         });
         this.hasMany(models.EstoqueTotal, {
-            foreignKey: 'id'
+            foreignKey: 'id_estoque'
         });
     }
 }
