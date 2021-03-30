@@ -54,12 +54,10 @@ class EstoqueController {
 
         let tNome = nome.toUpperCase();
 
-        const estoques = await Estoque.findAll({
-            where: { id }
-        })
+        const estoque = await Estoque.findByPk(id);
 
-        if (estoques == "") {
-            return res.status(404).json({ message: "ID não encontrado" })
+        if (!estoque) {
+            return res.status(404).json({ message: "Estoque não encontrado" })
         }
 
         const atualizar_estoque = await Estoque.update({
@@ -75,12 +73,10 @@ class EstoqueController {
     async delete(req, res) {
         const { id } = req.params;
 
-        const estoques = await Estoque.findAll({
-            where: { id }
-        })
+        const estoque = await Estoque.findByPk(id);
 
-        if (estoques == "") {
-            return res.status(404).json({ message: "ID não encontrado" })
+        if (!estoque) {
+            return res.status(404).json({ message: "Estoque não encontrado" })
         }
         const linhas = await Estoque.destroy({
             where: { id },
