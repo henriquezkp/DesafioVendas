@@ -477,7 +477,6 @@
             }
           },
           "404": {
-            "description": "Not Found",
             "schema": {
               "type": "object",
               "properties": {
@@ -489,7 +488,8 @@
               "xml": {
                 "name": "main"
               }
-            }
+            },
+            "description": "Not Found"
           }
         },
         "security": [
