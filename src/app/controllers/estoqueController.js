@@ -73,18 +73,13 @@ class EstoqueController {
     async delete(req, res) {
         const { id } = req.params;
 
-        const estoque = await Estoque.findByPk(id);
-
-        if (!estoque) {
-            return res.status(404).json({ message: "Estoque não encontrado" })
-        }
         const linhas = await Estoque.destroy({
             where: { id },
             returning: true
         });
 
-        return res.status(200).json(linhas, { message: "ID Excluido" });
-    };
+        return res.status(200).json(linhas);
+    }
 
 };
 
