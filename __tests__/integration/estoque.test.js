@@ -89,9 +89,22 @@ describe('Estoque', () => {
         const result = await request(app)
             .put(`/estoques/${estoque.dataValues.id}`)
             .send({
-                nome: 'Central',
+                nome: 'CENTRAL',
                 
             });
+
+        expect(result.status).toBe(200);
+    });
+
+    it('Should delete a Estoque', async () => {
+
+        const estoque = await Estoque.findOne({
+            where: { nome: 'CENTRAL' }
+        })
+
+        const result = await request(app)
+            .delete(`/estoques/${estoque.dataValues.id}`)
+        
 
         expect(result.status).toBe(200);
     });
