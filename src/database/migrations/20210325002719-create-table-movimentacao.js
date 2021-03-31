@@ -16,6 +16,14 @@ module.exports = {
           key: 'id'
         },
       },
+      id_motivo: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'motivos',
+          key: 'id'
+        },
+      },
       quantidade: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -24,7 +32,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'estoques',
+          model: 'estoqueTotal',
           key: 'id'
         },
       },

@@ -12,7 +12,7 @@ class Devolucao extends Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: 'estoques',
+                    model: 'estoqueTotal',
                     key: 'id'
                 },
             },
@@ -49,7 +49,7 @@ class Devolucao extends Model {
         this.belongsTo(models.Produto, {
             foreignKey: 'id_produto'});
 
-        this.belongsTo(models.Estoque,{
+        this.belongsTo(models.EstoqueTotal,{
             foreignKey: 'id_estoque'
         });
 

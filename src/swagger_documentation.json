@@ -85,6 +85,46 @@
         ]
       }
     },
+    "/categorias/{id}": {
+      "get": {
+        "tags": [
+          "Categorias"
+        ],
+        "description": "Listagem de Categorias",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Id da categoria"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListaDeCategorias"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string",
+                  "example": "Categoria não encontrada."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            },
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/produtos": {
       "get": {
         "tags": [
@@ -916,210 +956,6 @@
         ]
       }
     },
-    "/devolucoes": {
-      "get": {
-        "tags": [
-          "Devoluções"
-        ],
-        "description": "Listagem de Devoluções",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "schema": {
-              "$ref": "#/definitions/ListaDeDevolucoes"
-            },
-            "description": "OK"
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
-      },
-      "post": {
-        "tags": [
-          "Devoluções"
-        ],
-        "description": "Criar uma nova devolução",
-        "parameters": [
-          {
-            "name": "devolucao",
-            "in": "body",
-            "description": "Dados da devolução",
-            "schema": {
-              "$ref": "#/definitions/DevolucaoCreate"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "schema": {
-              "$ref": "#/definitions/Devolucao"
-            },
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "msg": {
-                  "type": "string",
-                  "example": "Dados inválidos."
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
-      }
-    },
-    "/devolucoes/{id}": {
-      "get": {
-        "tags": [
-          "Devoluções"
-        ],
-        "description": "Obtem uma devolução pelo ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "Id da devolução"
-          }
-        ],
-        "responses": {
-          "200": {
-            "schema": {
-              "$ref": "#/definitions/Devolucao"
-            },
-            "description": "OK"
-          },
-          "404": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "msg": {
-                  "type": "string",
-                  "example": "Devolução não encontrada."
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            },
-            "description": "Not Found"
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
-      },
-      "put": {
-        "tags": [
-          "Devoluções"
-        ],
-        "description": "Atualizar uma devolução",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "devolucao",
-            "in": "body",
-            "description": "Dados da devolução",
-            "schema": {
-              "$ref": "#/definitions/DevolucaoUpdated"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "schema": {
-              "$ref": "#/definitions/Devolucao"
-            },
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "msg": {
-                  "type": "string",
-                  "example": "Dados inválidos."
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "Devoluções"
-        ],
-        "description": "Deleta uma devolução pelo ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "integer",
-            "description": "Id da devolução"
-          }
-        ],
-        "responses": {
-          "200": {
-            "schema": {
-              "$ref": "#/definitions/DevolucaoDelete"
-            },
-            "description": "OK"
-          },
-          "404": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "msg": {
-                  "type": "string",
-                  "example": "Devolução não encontrada."
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            },
-            "description": "Not Found"
-          }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
-      }
-    },
     "/motivos": {
       "get": {
         "tags": [
@@ -1773,154 +1609,6 @@
       },
       "required": [
         "nome"
-      ]
-    },
-    "Devolucao": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "number",
-          "example": 1
-        },
-        "id_estoque": {
-          "type": "number",
-          "example": 5
-        },
-        "id_produto": {
-          "type": "number",
-          "example": 15
-        },
-        "id_motivo": {
-          "type": "number",
-          "example": 2
-        },
-        "quantidade": {
-          "type": "number",
-          "example": 100
-        }
-      },
-      "required": [
-        "id",
-        "id_estoque",
-        "id_produto",
-        "id_motivo",
-        "quantidade"
-      ]
-    },
-    "ListaDeDevolucaos": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number",
-            "example": 1
-          },
-          "id_estoque": {
-            "type": "number",
-            "example": 5
-          },
-          "id_produto": {
-            "type": "number",
-            "example": 15
-          },
-          "id_motivo": {
-            "type": "number",
-            "example": 2
-          },
-          "quantidade": {
-            "type": "number",
-            "example": 100
-          }
-        },
-        "required": [
-          "id",
-          "id_estoque",
-          "id_produto",
-          "id_motivo",
-          "quantidade"
-        ]
-      }
-    },
-    "DevolucaoCreate": {
-      "type": "object",
-      "properties": {
-        "id_estoque": {
-          "type": "number",
-          "example": 5
-        },
-        "id_produto": {
-          "type": "number",
-          "example": 15
-        },
-        "id_motivo": {
-          "type": "number",
-          "example": 2
-        },
-        "quantidade": {
-          "type": "number",
-          "example": 100
-        }
-      },
-      "required": [
-        "id_estoque",
-        "id_produto",
-        "id_motivo",
-        "quantidade"
-      ]
-    },
-    "DevolucaoUpdated": {
-      "type": "object",
-      "properties": {
-        "id_estoque": {
-          "type": "number",
-          "example": 5
-        },
-        "id_produto": {
-          "type": "number",
-          "example": 15
-        },
-        "id_motivo": {
-          "type": "number",
-          "example": 2
-        },
-        "quantidade": {
-          "type": "number",
-          "example": 100
-        }
-      },
-      "required": [
-        "id_estoque",
-        "id_produto",
-        "id_motivo",
-        "quantidade"
-      ]
-    },
-    "DevolucaoDelete": {
-      "type": "object",
-      "properties": {
-        "id_estoque": {
-          "type": "number",
-          "example": 5
-        },
-        "id_produto": {
-          "type": "number",
-          "example": 15
-        },
-        "id_motivo": {
-          "type": "number",
-          "example": 2
-        },
-        "quantidade": {
-          "type": "number",
-          "example": 100
-        }
-      },
-      "required": [
-        "id_estoque",
-        "id_produto",
-        "id_motivo",
-        "quantidade"
       ]
     },
     "Motivo": {

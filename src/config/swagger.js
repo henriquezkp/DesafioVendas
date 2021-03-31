@@ -13,9 +13,6 @@ const { Movimentacao, MovimentacaoCreate, MovimentacaoUpdated, MovimentacaoDelet
 const { TipoMovimentacao, TipoMovimentacaoCreate, TipoMovimentacaoUpdated, TipoMovimentacaoDelete } =
     require('../app/documentation/TipoMovimentacao');
 
-const { Devolucao, DevolucaoCreate, DevolucaoUpdated, DevolucaoDelete } =
-    require('../app/documentation/Devolucao');
-
 const { Motivo, MotivoCreate, MotivoUpdated, MotivoDelete } =
     require('../app/documentation/Motivo');
 
@@ -71,13 +68,6 @@ module.exports = {
         TipoMovimentacaoCreate,
         TipoMovimentacaoUpdated,
         TipoMovimentacaoDelete,
-        Devolucao,
-        ListaDeDevolucaos: [
-            Devolucao
-        ],
-        DevolucaoCreate,
-        DevolucaoUpdated,
-        DevolucaoDelete,
         Motivo,
         ListaDeMotivos: [
             Motivo

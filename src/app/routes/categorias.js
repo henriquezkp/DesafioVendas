@@ -18,6 +18,36 @@ routes.get(
     */
 );
 
+
+routes.get(
+    '/categorias/:id',
+    CategoriaController.show
+    // #swagger.description = 'Listagem de Categorias'
+    // #swagger.tags = ['Categorias']
+    /*
+        #swagger.parameters['id'] = {
+            in: 'path',
+            description: 'Id da categoria',
+            required: true,
+            type: 'integer' 
+        }
+    */
+    /*
+       #swagger.responses[200] = {
+           schema: {
+               "$ref": "#/definitions/ListaDeCategorias"
+           }
+       }
+    */
+   /*
+       #swagger.responses[404] = {
+           schema: {
+               msg: 'Categoria não encontrada.'
+           }
+       }
+    */
+);
+
 routes.post(
     '/categorias',
     CategoriaController.store

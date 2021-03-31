@@ -1,4 +1,5 @@
 import Estoque from '../models/estoque';
+import EstoqueTotal from '../models/estoqueTotal';
 import sequelize from 'sequelize';
 
 class EstoqueController {
@@ -19,7 +20,7 @@ class EstoqueController {
 
         const estoque = await Estoque.findByPk(id,{
             include:[{
-                
+                model:EstoqueTotal
             }]
         });
 

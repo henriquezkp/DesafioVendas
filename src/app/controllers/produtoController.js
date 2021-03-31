@@ -6,8 +6,10 @@ class ProdutoController {
     async index(req, res) {
         const produtos = await Produto.findAll({
             include: [
-                { 
+                {
                     model: Categoria,
+                    as: 'categorias',
+                    
                 }
             ]
         });
@@ -17,7 +19,16 @@ class ProdutoController {
     async show(req, res) {
         const { id } = req.params;
 
-        const produto = await Produto.findByPk(id);
+        const produto = await Produto.findByPk(id, {
+            include: [
+                {
+                    model: Categoria,
+                    as: 'categorias',
+                    attributes:['nome']
+
+                }
+            ]
+        });
 
         return res.json(produto);
     }

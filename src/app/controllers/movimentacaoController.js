@@ -1,4 +1,5 @@
 import Movimentacao from '../models/movimentacao';
+import EstoqueTotal from '../models/estoqueTotal';
 
 class MovimentacaoController {
 
@@ -36,6 +37,23 @@ class MovimentacaoController {
             id_estoque,
             id_produto,
         });
+
+        /*switch (movimentacao.id_tipo) {
+            case 1:
+                await EstoqueTotal.create({
+                    id_estoque,
+                    id_produto,
+                    quantidade,
+                });
+                return;
+            case 2:
+                await EstoqueTotal.destroy({
+                    id_estoque,
+                    id_produto,
+                    quantidade,
+                });
+                return;
+        }*/
 
         return res.status(200).json(movimentacao);
     }

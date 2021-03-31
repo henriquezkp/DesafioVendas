@@ -16,6 +16,14 @@ class Movimentacao extends Model {
           key: 'id'
         },
       },
+      id_motivo: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'motivos',
+          key: 'id'
+        },
+      },
       quantidade: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -24,7 +32,7 @@ class Movimentacao extends Model {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'estoques',
+          model: 'estoqueTotal',
           key: 'id'
         },
       },
@@ -53,10 +61,12 @@ class Movimentacao extends Model {
       foreignKey: 'id_produto'
     });
 
-    this.belongsTo(models.Estoque, {
+    this.belongsTo(models.EstoqueTotal, {
       foreignKey: 'id_estoque'
     });
 
+    this.belongsTo(models.Motivo, {
+      foreignKey: 'id_motivo'});
   }
 }
 

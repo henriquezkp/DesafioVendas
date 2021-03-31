@@ -35,12 +35,10 @@ class Produto extends Model {
     static associate(models) {
 
         this.belongsTo(models.Categoria, {
+            as: 'categorias',
             foreignKey: 'id_categoria'
         });
         this.hasMany(models.Movimentacao, {
-            foreignKey: 'id_produto'
-        });
-        this.hasMany(models.Devolucao, {
             foreignKey: 'id_produto'
         });
         this.hasMany(models.EstoqueTotal, {

@@ -21,7 +21,7 @@ class Motivo extends Model {
   }
 
   static associate(models){
-    this.hasMany(models.Devolucao, {
+    this.hasMany(models.Movimentacao, {
       foreignKey: 'id_motivo'});
   }
 }

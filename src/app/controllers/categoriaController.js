@@ -9,11 +9,26 @@ class CategoriaController {
         const categorias = await Categoria.findAll({
             include: [
                 {
-                    model: Produto
+                    model: Produto,
+                    attributes:['nome']
                 }
             ]
         });
         return res.status(200).json(categorias);
+    }
+
+    async show(req, res) {
+        const {id}=req.params;
+        
+        const categoria = await Categoria.findByPk(id,{
+            include: [
+                {
+                    model: Produto,
+                    attributes:['nome']
+                }
+            ]
+        });
+        return res.status(200).json(categoria);
     }
 
     async store(req, res) {

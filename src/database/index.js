@@ -7,7 +7,6 @@ import Motivo from '../app/models/motivo';
 import TiposDeMovimentacao from '../app/models/tipo';
 import Movimentacao from '../app/models/movimentacao';
 import Estoque from '../app/models/estoque';
-import Devolucao from '../app/models/devolucao';
 import EstoqueTotal from '../app/models/estoqueTotal';
 
 
@@ -18,7 +17,6 @@ const models = [
     TiposDeMovimentacao,
     Movimentacao,
     Estoque,
-    Devolucao,
     EstoqueTotal
 
 ];
