@@ -32,7 +32,7 @@ describe('Testes em Produto', () => {
             .post('/produtos')
             .send({
                 id_categoria: resId,
-                nome: 'Cafeteira',
+                nome: 'CAFETEIRA',
                 preco: 18.00
             });
 
@@ -66,5 +66,60 @@ describe('Testes em Produto', () => {
 
         expect(result.status).toBe(200);
 
+    });
+
+    it('Deveria retornar apenas um produto cadastrado' , async () => {
+      
+        expect.assertions(1);
+
+        const produto = await Produto.findOne({
+            where: { nome: 'CAFETEIRA' }
+        })
+  
+     
+  
+          const result = await request(app)
+          .get(`/produtos/${produto.dataValues.id}`)
+  
+          
+  
+          expect(result.status).toBe(200);
+      
+  
+      });
+
+      it('Deveria alterar um produto', async () => {
+
+        expect.assertions(1);
+
+        const produto = await Produto.findOne({
+            where: { nome: 'CAFETEIRA' }
+        })
+
+        const result = await request(app)
+            .put(`/produtos/${produto.dataValues.id}`)
+            .send({
+                id_categoria:resId,
+                nome: 'BOLA',
+                preco: 20
+                
+            });
+
+        expect(result.status).toBe(200);
+    });
+
+    it('Deveria deletar um produto', async () => {
+
+        expect.assertions(1);
+
+        const produto = await Produto.findOne({
+            where: { nome: 'BOLA' }
+        })
+
+        const result = await request(app)
+            .delete(`/produtos/${produto.dataValues.id}`)
+        
+
+        expect(result.status).toBe(200);
     });
 });
