@@ -87,7 +87,7 @@ describe('Testes em Motivo', () => {
             .delete(`/motivos/${motivos.dataValues.id}`)
         
 
-        expect(result.status).toBe(200);
+        expect(result.status).toBe(200):
     });
 
 
