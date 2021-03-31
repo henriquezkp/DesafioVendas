@@ -17,7 +17,11 @@ class EstoqueController {
         };
 
 
-        const estoque = await Estoque.findByPk(id);
+        const estoque = await Estoque.findByPk(id,{
+            include:[{
+                
+            }]
+        });
 
         return res.status(200).json(estoque);
 
