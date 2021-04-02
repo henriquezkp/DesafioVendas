@@ -19,6 +19,21 @@ routes.get(
 );
 
 routes.get(
+    '/movimentacoes/produtomaisvendido',
+    MovimentacaoController.showBestSellingProduct
+    // #swagger.description = 'Listagem de Movimentações
+    // #swagger.tags = ['Movimentações']
+    // #swagger.security = [{JWT: []}]
+    /*
+       #swagger.responses[200] = {
+           schema: {
+               "$ref": "#/definitions/ListaDeMovimentacoes"
+           }
+       }
+    */
+);
+
+routes.get(
     '/movimentacoes/:id',
     MovimentacaoController.show
     // #swagger.description = 'Obtem uma movimentação pelo ID'

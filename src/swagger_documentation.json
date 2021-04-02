@@ -675,10 +675,10 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
             "schema": {
               "$ref": "#/definitions/Movimentacao"
-            }
+            },
+            "description": "OK"
           },
           "400": {
             "schema": {
