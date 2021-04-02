@@ -10,6 +10,12 @@ class motivoController {
     async show(req, res) {
         const { id } = req.params;
 
+        const motivos = await Motivo.findAll()
+
+        if (id > motivos.length) {
+            return res.status(400).json({ message: 'Motivo não encontrado' });
+        };
+
         const motivo = await Motivo.findByPk(id, {
             where: { id: id },
         });
