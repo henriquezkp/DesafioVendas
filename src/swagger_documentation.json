@@ -107,6 +107,9 @@
               "$ref": "#/definitions/ListaDeCategorias"
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "404": {
             "schema": {
               "type": "object",
