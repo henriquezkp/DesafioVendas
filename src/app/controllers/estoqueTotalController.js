@@ -1,10 +1,22 @@
 import sequelize from 'sequelize';
 import EstoqueTotal from '../models/estoqueTotal';
+import Produto from '../models/produto';
 
 class EstoqueTotalController {
 
     async index(req, res) {
-        const estoqueTotal = await EstoqueTotal.findAll()
+        const estoqueTotal = await EstoqueTotal.findAll({
+            attributes:['id_estoque'],
+            include:[
+                {
+                    model:Produto,
+                    attributes:['nome'],
+                }
+            ],
+            group:[]
+        });
+
+
 
         return res.json(estoqueTotal);
     };

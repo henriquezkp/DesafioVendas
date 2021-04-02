@@ -1,11 +1,27 @@
 import Estoque from '../models/estoque';
 import EstoqueTotal from '../models/estoqueTotal';
 import sequelize from 'sequelize';
+import Produto from '../models/produto';
 
 class EstoqueController {
 
     async index(req, res) {
-        const estoques = await Estoque.findAll()
+        const estoques = await Estoque.findAll({
+            attributes: ['id', 'nome'],
+            include: [{
+                model: EstoqueTotal,
+                include: [{
+                    model: Produto,
+                    attributes: ['nome']
+                }],
+                attributes: [
+                    'quantidade',
+                    [sequelize.fn('sum', sequelize.col('quantidade')), 'total']
+                ],
+                group:['quantidade']
+            }],
+            group:['Estoque.id', 'EstoqueTotals.id','EstoqueTotals->Produto.id']
+        })
 
         return res.status(200).json(estoques);
     }
@@ -18,9 +34,9 @@ class EstoqueController {
         };
 
 
-        const estoque = await Estoque.findByPk(id,{
-            include:[{
-                model:EstoqueTotal
+        const estoque = await Estoque.findByPk(id, {
+            include: [{
+                model: EstoqueTotal
             }]
         });
 
