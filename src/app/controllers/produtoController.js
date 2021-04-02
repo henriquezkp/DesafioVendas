@@ -17,7 +17,23 @@ class ProdutoController {
     }
 
     async show(req, res) {
-        const { id } = req.params;
+        const id = req.params.id;
+
+        const produtos = await Produto.findAll({
+            include: [
+                {
+                    model: Categoria,
+                    as: 'categorias',
+                    
+                }
+            ]
+        });
+        console.log(id.length);
+
+        if(id > produtos.length) {
+            return res.status(400).json({ message: 'Produto não encontrado!' });
+
+        }
 
         const produto = await Produto.findByPk(id, {
             include: [

@@ -213,6 +213,9 @@
             },
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "404": {
             "schema": {
               "type": "object",
@@ -595,6 +598,28 @@
               "xml": {
                 "name": "main"
               }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/movimentacoes/produtomaisvendido": {
+      "get": {
+        "tags": [
+          "Movimentações"
+        ],
+        "description": "Listagem de Movimentações\r \n \n \n#swagger.tags = [",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListaDeMovimentacoes"
             }
           }
         },
