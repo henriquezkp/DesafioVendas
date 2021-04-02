@@ -15,8 +15,10 @@ class MovimentacaoController {
     async show(req, res) {
         const { id } = req.params;
 
-        if (!id) {
-            return res.status(400).json({ message: 'Movimentação não encontrada' });
+        const movimentacoes = await Movimentacao.findAll();
+
+        if (id > movimentacoes.length) {
+            return res.status(400).json({ message: 'Registro de movimentação não encontrado' });
         };
 
         const movimentacao = await Movimentacao.findByPk(id);
