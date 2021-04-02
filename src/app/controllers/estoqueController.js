@@ -7,20 +7,21 @@ class EstoqueController {
 
     async index(req, res) {
         const estoques = await Estoque.findAll({
-            attributes: ['id', 'nome'],
+
+            attributes: ['id', 'nome',
+                [sequelize.fn('sum', sequelize.col('EstoqueTotals.id')), 'total']
+            ],
             include: [{
                 model: EstoqueTotal,
-                include: [{
+                attributes: [
+                ],
+                /*include: [{
                     model: Produto,
                     attributes: ['nome']
-                }],
-                attributes: [
-                    'quantidade',
-                    [sequelize.fn('sum', sequelize.col('quantidade')), 'total']
-                ],
-                group:['quantidade']
+                }],*/
+
             }],
-            group:['Estoque.id', 'EstoqueTotals.id','EstoqueTotals->Produto.id']
+            group: ['Estoque.id', 'EstoqueTotals.id', 'EstoqueTotals->Produto.id']
         })
 
         return res.status(200).json(estoques);

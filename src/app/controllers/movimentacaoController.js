@@ -23,12 +23,14 @@ class MovimentacaoController {
 
 
     async store(req, res) {
-        const { id_tipo, quantidade, id_estoque, id_produto } = req.body;
+        const { id_tipo, quantidade, id_estoque, id_produto, id_motivo } = req.body;
 
         if (!id_tipo | !quantidade | !id_estoque | !id_produto) {
 
             return res.status(400).json({ message: 'Dados Inválidos' });
 
+        }else if (id_tipo===2 && !id_motivo){
+            return res.status(400).json({ message: 'Dados Inválidos' });
         }
 
         const movimentacao = await Movimentacao.create({
@@ -36,24 +38,32 @@ class MovimentacaoController {
             quantidade,
             id_estoque,
             id_produto,
+            id_motivo
         });
 
-        /*switch (movimentacao.id_tipo) {
+        const saldo = await EstoqueTotal.findOne({
+            where: {
+                id_estoque,
+                id_produto,
+            }
+        });
+
+        switch (id_tipo) {
             case 1:
-                await EstoqueTotal.create({
+                await saldo.update({
                     id_estoque,
                     id_produto,
-                    quantidade,
+                    quantidade: saldo.quantidade - quantidade,
                 });
-                return;
+                break;
             case 2:
-                await EstoqueTotal.destroy({
+                await saldo.update({
                     id_estoque,
                     id_produto,
-                    quantidade,
+                    quantidade: saldo.quantidade + quantidade,
                 });
-                return;
-        }*/
+                break;
+        }
 
         return res.status(200).json(movimentacao);
     }

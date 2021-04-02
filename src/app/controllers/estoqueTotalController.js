@@ -6,14 +6,16 @@ class EstoqueTotalController {
 
     async index(req, res) {
         const estoqueTotal = await EstoqueTotal.findAll({
-            attributes:['id_estoque'],
+            attributes:['id_estoque', 'id_produto',
+            [sequelize.fn('sum', sequelize.col('quantidade')), 'total']
+        ],
             include:[
                 {
                     model:Produto,
                     attributes:['nome'],
                 }
             ],
-            group:[]
+            group:['id_estoque', 'id_produto','Produto.id']
         });
 
 
