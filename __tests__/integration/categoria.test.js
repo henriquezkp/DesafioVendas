@@ -18,7 +18,7 @@ describe('Testes em Categoria', () => {
         const result = await request(app)
         .post('/categorias')
         .send({
-            nome: 'Telefones'
+            nome: 'FONES'
         });
 
         expect(result.status).toBe(200);
@@ -58,4 +58,23 @@ describe('Testes em Categoria', () => {
          
     });
 
+    it('Deveria retornar erro 400 ao informar um id inválido' , async () => {
+        expect.assertions(1);
+
+
+      const categoria = 100
+      
+
+    
+
+        const result = await request(app)
+        .get(`/categorias/${categoria}`)
+
+        
+
+        expect(result.status).toBe(400);
+    
+
+    });
+    
 })

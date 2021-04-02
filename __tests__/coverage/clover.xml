@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1617399115709" clover="3.2.0">
-  <project timestamp="1617399115709" name="All files">
-    <metrics statements="2002" coveredstatements="1639" conditionals="144" coveredconditionals="103" methods="88" coveredmethods="67" elements="2234" coveredelements="1809" complexity="0" loc="2002" ncloc="2002" packages="5" files="29" classes="29"/>
+<coverage generated="1617400287098" clover="3.2.0">
+  <project timestamp="1617400287099" name="All files">
+    <metrics statements="2004" coveredstatements="1659" conditionals="146" coveredconditionals="104" methods="88" coveredmethods="68" elements="2238" coveredelements="1831" complexity="0" loc="2004" ncloc="2004" packages="5" files="29" classes="29"/>
     <package name="controllers">
-      <metrics statements="646" coveredstatements="395" conditionals="68" coveredconditionals="49" methods="42" coveredmethods="28"/>
+      <metrics statements="648" coveredstatements="415" conditionals="70" coveredconditionals="50" methods="42" coveredmethods="29"/>
       <file name="categoriaController.js" path="C:\Users\User\Desktop\desafiovendas\DesafioVendas\src\app\controllers\categoriaController.js">
-        <metrics statements="73" coveredstatements="45" conditionals="9" coveredconditionals="8" methods="5" coveredmethods="4"/>
+        <metrics statements="75" coveredstatements="65" conditionals="11" coveredconditionals="9" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="3" count="3" type="stmt"/>
@@ -38,25 +38,25 @@
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
+        <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="52" count="0" type="stmt"/>
         <line num="53" count="0" type="stmt"/>
         <line num="54" count="0" type="stmt"/>
@@ -79,6 +79,8 @@
         <line num="71" count="1" type="stmt"/>
         <line num="72" count="1" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
       </file>
       <file name="estoqueController.js" path="C:\Users\User\Desktop\desafiovendas\DesafioVendas\src\app\controllers\estoqueController.js">
         <metrics statements="127" coveredstatements="120" conditionals="17" coveredconditionals="12" methods="6" coveredmethods="6"/>
