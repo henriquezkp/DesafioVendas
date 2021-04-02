@@ -1,5 +1,8 @@
+import sequelize from 'sequelize';
+
 import Movimentacao from '../models/movimentacao';
 import EstoqueTotal from '../models/estoqueTotal';
+import Produto from '../models/produto';
 
 class MovimentacaoController {
 
@@ -21,6 +24,24 @@ class MovimentacaoController {
         return res.status(200).json(movimentacao);
     };
 
+    async showBestSellingProduct(req, res) {
+        const movement = await Movimentacao.findAll({
+            where: { id_tipo: 1 },
+            attributes: ['id_tipo', 'id_produto',
+                [sequelize.fn('count', sequelize.col('id_produto')), 'vendas'],
+            ],
+            include: [
+                {
+                    model: Produto,
+                    attributes: ['nome']
+                }
+            ],
+            group: ['id_produto', 'Movimentacao.id_tipo', 'Produto.id'],
+            order: ['vendas'],
+
+        });
+        return res.status(200).json(movement)
+    }
 
     async store(req, res) {
         const { id_tipo, quantidade, id_estoque, id_produto, id_motivo } = req.body;
@@ -29,7 +50,7 @@ class MovimentacaoController {
 
             return res.status(400).json({ message: 'Dados Inválidos' });
 
-        }else if (id_tipo===2 && !id_motivo){
+        } else if (id_tipo === 2 && !id_motivo) {
             return res.status(400).json({ message: 'Dados Inválidos' });
         }
 
