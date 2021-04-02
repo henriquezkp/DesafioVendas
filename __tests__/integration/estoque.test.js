@@ -61,7 +61,7 @@ describe('Estoque', () => {
     });
 
     it('Deveria retornar apenas um estoque cadastrado' , async () => {
-      
+        expect.assertions(1);
 
 
       const estoque = await Estoque.findOne({
@@ -80,7 +80,27 @@ describe('Estoque', () => {
 
     });
 
+    it('Deveria retornar erro 400 ao informar um id inválido' , async () => {
+        expect.assertions(1);
+
+
+      const estoque = 100
+      
+
+    console.log("DADOS", estoque);
+
+        const result = await request(app)
+        .get(`/estoques/${estoque}`)
+
+        
+
+        expect(result.status).toBe(400);
+    
+
+    });
+
     it('Should update a Estoque', async () => {
+        expect.assertions(1);
 
         const estoque = await Estoque.findOne({
             where: { nome: 'ESTOQUE' }
@@ -97,6 +117,7 @@ describe('Estoque', () => {
     });
 
     it('Should delete a Estoque', async () => {
+        expect.assertions(1);
 
         const estoque = await Estoque.findOne({
             where: { nome: 'CENTRAL' }
