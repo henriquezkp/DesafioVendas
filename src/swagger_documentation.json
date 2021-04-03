@@ -107,6 +107,9 @@
               "$ref": "#/definitions/ListaDeCategorias"
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "404": {
             "schema": {
               "type": "object",
@@ -212,6 +215,9 @@
               "$ref": "#/definitions/Produto"
             },
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "404": {
             "schema": {
@@ -627,6 +633,7 @@
         ]
       }
     },
+<<<<<<< HEAD
     "/movimentacoes/motivodevolvido": {
       "get": {
         "tags": [
@@ -649,6 +656,8 @@
         ]
       }
     },
+=======
+>>>>>>> cae212cb5aad49e81d5b75ef31d1a8c754e9fbbf
     "/movimentacoes/{id}": {
       "get": {
         "tags": [
@@ -1087,6 +1096,9 @@
               "$ref": "#/definitions/Motivo"
             },
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "404": {
             "schema": {

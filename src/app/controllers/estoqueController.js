@@ -15,10 +15,10 @@ class EstoqueController {
                 model: EstoqueTotal,
                 attributes: [
                 ],
-                /*include: [{
+                include: [{
                     model: Produto,
                     attributes: ['nome']
-                }],*/
+                }],
 
             }],
             group: ['Estoque.id', 'EstoqueTotals.id', 'EstoqueTotals->Produto.id']
@@ -30,7 +30,26 @@ class EstoqueController {
     async show(req, res) {
         const { id } = req.params;
 
-        if (!id) {
+        const estoques = await Estoque.findAll({
+
+            attributes: ['id', 'nome',
+                [sequelize.fn('sum', sequelize.col('EstoqueTotals.id')), 'total']
+            ],
+            include: [{
+                model: EstoqueTotal,
+                attributes: [
+                ],
+                include: [{
+                    model: Produto,
+                    attributes: ['nome']
+                }],
+
+            }],
+            group: ['Estoque.id', 'EstoqueTotals.id', 'EstoqueTotals->Produto.id']
+        })
+
+
+        if (id > estoques.length) {
             return res.status(400).json({ message: 'Estoque não encontrado' });
         };
 

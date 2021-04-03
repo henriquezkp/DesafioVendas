@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96.83% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>61/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.54% </span>
+                <span class="strong">53.85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/13</span>
+                <span class='fraction'>7/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96.83% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>61/63</span>
             </div>
         
             
@@ -113,7 +113,13 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -135,6 +141,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -181,6 +193,12 @@ class motivoController {
     async show(req, res) {
         const { id } = req.params;
 &nbsp;
+        const motivos = await Motivo.findAll()
+&nbsp;
+        if (id &gt; motivos.length) {
+            return res.status(400).json({ message: 'Motivo não en<span class="branch-0 cbranch-no" title="branch not covered" >contrado'</span> });
+        };
+&nbsp;
         const motivo = await Motivo.findByPk(id, {
             where: { id: id },
         });
@@ -188,9 +206,9 @@ class motivoController {
         return res.json(motivo);
     };
 &nbsp;
-    asyn<span class="branch-0 cbranch-no" title="branch not covered" >c store(r</span>eq, res) {
-        const { nome } = req.body;
-&nbsp;
+<span class="branch-0 cbranch-no" title="branch not covered" >    async store(req, res) {</span>
+<span class="cstat-no" title="statement not covered" >        const { nome } = req.body;</span>
+<span class="cstat-no" title="statement not covered" ></span>
         const motivo = await Motivo.create({
             nome,
             created_at: new Date(),
@@ -199,7 +217,7 @@ class motivoController {
         return res.json(motivo);
     }
 &nbsp;
-<span class="branch-0 cbranch-no" title="branch not covered" >    async</span> update(req, res) {
+    async up<span class="branch-0 cbranch-no" title="branch not covered" >date(re</span>q, res) {
         const { id } = req.params;
         const { nome } = req.body;
 &nbsp;
@@ -207,8 +225,8 @@ class motivoController {
             nome,
             created_at: new Date(),
         }, {
-            where: {<span class="branch-0 cbranch-no" title="branch not covered" > id },</span>
-        });
+            where: { id },
+<span class="branch-0 cbranch-no" title="branch not covered" >        }</span>);
 &nbsp;
         return res.json(motivo);
     }
@@ -225,14 +243,14 @@ class motivoController {
     }
 }
 &nbsp;
-export default ne<span class="branch-0 cbranch-no" title="branch not covered" >w motiv</span>oController();</pre></td></tr></table></pre>
+export default new motivoCo<span class="branch-0 cbranch-no" title="branch not covered" >ntrolle</span>r();</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Mar 30 2021 22:25:09 GMT-0300 (GMT-03:00)
+                at Fri Apr 02 2021 18:51:26 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

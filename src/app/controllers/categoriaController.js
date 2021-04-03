@@ -18,7 +18,21 @@ class CategoriaController {
     }
 
     async show(req, res) {
-        const {id}=req.params;
+        const {id} = req.params;
+
+        const categorias = await Categoria.findAll({
+            include: [
+                {
+                    model: Produto,
+                    attributes:['nome']
+                }
+            ]
+        });
+
+        if (id > categorias.length) {
+            return res.status(400).json({ message: 'Categoria não encontrada' });
+        };
+
         
         const categoria = await Categoria.findByPk(id,{
             include: [
@@ -53,6 +67,8 @@ class CategoriaController {
             return res.status(200).json(categorias);
         }
     }
+
+    
 
 }
 
