@@ -3,6 +3,7 @@ import sequelize from 'sequelize';
 import Movimentacao from '../models/movimentacao';
 import EstoqueTotal from '../models/estoqueTotal';
 import Produto from '../models/produto';
+import Motivo from '../models/motivo';
 
 class MovimentacaoController {
 
@@ -37,7 +38,26 @@ class MovimentacaoController {
                 }
             ],
             group: ['id_produto', 'Movimentacao.id_tipo', 'Produto.id'],
-            order: ['vendas'],
+            order: [[sequelize.literal('vendas'), 'DESC']]
+
+        });
+        return res.status(200).json(movement)
+    }
+
+    async showMostReturnedReason(req, res) {
+        const movement = await Movimentacao.findAll({
+            where: { id_tipo: 2 },
+            attributes: ['id_tipo', 'id_motivo',
+                [sequelize.fn('count', sequelize.col('id_motivo')), 'motivos'],
+            ],
+            include: [
+                {
+                    model: Motivo,
+                    attributes: ['nome']
+                }
+            ],
+            group: ['id_motivo', 'Movimentacao.id_tipo', 'Motivo.id'],
+            order: [[sequelize.literal('motivos'), 'DESC']]
 
         });
         return res.status(200).json(movement)
